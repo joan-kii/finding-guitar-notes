@@ -21,6 +21,12 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     fontSize: '1.5em',
     cursor: 'context-menu'
+  },
+  exerciseName: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    fontSize: '1.5em',
+    cursor: 'context-menu',
   }
 }));
 
@@ -47,6 +53,9 @@ const Topbar = () => {
           </IconButton>
           <Typography variant='h1' className={classes.title}>
             Finding Guitar Notes
+          </Typography>
+          <Typography variant='h3' className={classes.exerciseName}>
+            Notes per String
           </Typography>
           <IconButton 
             edge='end'
