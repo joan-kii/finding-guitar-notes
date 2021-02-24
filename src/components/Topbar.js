@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   }, 
   toolbar: {
     background: '#424242',
+    height: '8vh',
   },
   menuButton: {
     marginRight: theme.spacing(2),

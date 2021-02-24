@@ -12,6 +12,7 @@ const useStyles = makeStyles ({
     background: '#424242',
     position: 'fixed',
     bottom: 0,
+    height: '8vh',
   },
   icons: {
     color: '#fff',
