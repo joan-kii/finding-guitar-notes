@@ -31,10 +31,34 @@ body {
   height: 100%;
 }
 
+.string1:before {
+  height: calc(var(--string-height) * 0.4vh);
+}
+
+.string2:before {
+  height: calc(var(--string-height) * 0.6vh);
+}
+
+.string3:before {
+  height: calc(var(--string-height) * 0.7vh);
+}
+
+.string4:before {
+  height: calc(var(--string-height) * 0.9vh);
+}
+
+.string5:before {
+  height: calc(var(--string-height) * 1vh);
+}
+
+.string6:before {
+  height: calc(var(--string-height) * 1.1vh);
+}
+
 .string:before {
   content: '';
   width: 100%;
-  height: calc(var(--string-height) * 1vh);
+  /* height: calc(var(--string-height) * 1vh); */
   background: linear-gradient(#eee, #999);
   box-shadow: 13vh 5px 10px #806233;
   z-index: 1;

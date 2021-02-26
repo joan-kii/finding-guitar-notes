@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Fretboard = () => {
+const Fretboard = ({ fretboard }) => {
+
+  console.log(fretboard)
   return (
     <div className='fretboard'>
-      <div className='string'>
+      {fretboard}
+      {/* <div className='string'>
         <div className='note-fret'></div>
         <div className='note-fret'></div>
         <div className='note-fret'></div>
@@ -94,7 +97,7 @@ const Fretboard = () => {
         <div className='note-fret'></div>
         <div className='note-fret'></div>
         <div className='note-fret'></div>
-      </div>
+      </div> */}
     </div>
   );
 }; 

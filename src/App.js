@@ -7,12 +7,12 @@ import Footer from './components/Footer';
 // Create Fretboard
 
 const numberOfStrings = 6;
-const numberOfFrets = 12;
-const singleFretmarks = [3, 5, 7, 9];
-const doubleFretmarks = 12;
+const numberOfFrets = 13;
+const singleFretmarks = [4, 6, 8, 10];
+const doubleFretmarks = 13;
+const fretboard = [];
 
 const createFretboard = () => {
-  const fretboard = [];
   let string;
   let fret;
   for (let j = 1; j <= numberOfStrings; j++) {
@@ -22,7 +22,8 @@ const createFretboard = () => {
         if (singleFretmarks.includes(i)) {
           fret = React.createElement('div', {key: i, className: 'note-fret single-fretmark'}, '');
         } else if (i === doubleFretmarks) {
-          fret = React.createElement('div', {key: i, className: 'note-fret double-fretmark'}, '');
+          fret = React.createElement('div', {key: i, className: 'note-fret'}, 
+            React.createElement('div', {key: i, className: 'double-fretmark'}, ''));
         } else {
           fret = React.createElement('div', {key: i, className: 'note-fret'}, '');
         }
@@ -31,7 +32,7 @@ const createFretboard = () => {
       }
       frets.push(fret);
     }
-    string = React.createElement('div', {key:j, className:'string'}, frets);
+    string = React.createElement('div', {key:j, className: `string string${j}`}, frets);
     fretboard.push(string);
   }
 };
@@ -42,7 +43,7 @@ const App = () => {
   return (
     <div className="App">
       <Topbar />
-      <Fretboard />
+      <Fretboard fretboard={fretboard} />
       <Infozone />
       <Footer />
     </div>
