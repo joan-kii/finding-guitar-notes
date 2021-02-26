@@ -12,24 +12,31 @@ const singleFretmarks = [3, 5, 7, 9];
 const doubleFretmarks = 12;
 
 const createFretboard = () => {
-  const frets = [];
-  for (let i = 1; i <= numberOfFrets; i++) {
-    let fret;
-    if (i in singleFretmarks) {
-      fret = React.createElement('div', {key: {i}, className: 'note-fret single-fretmark'}, '');
-    } else if (i === doubleFretmarks) {
-      fret = React.createElement('div', {key: {i}, className: 'note-fret double-fretmark'}, '');
-    } else {
-      fret = React.createElement('div', {key: {i}, className: 'note-fret'}, '');
-    }
-    frets.push(fret);
-  }
   const fretboard = [];
+  let string;
+  let fret;
   for (let j = 1; j <= numberOfStrings; j++) {
-    let string = React.createElement('div', {key:{j}, className:'string'}, '');
+    const frets = [];
+    for (let i = 1; i <= numberOfFrets; i++) {
+      if (j === 1) {
+        if (singleFretmarks.includes(i)) {
+          fret = React.createElement('div', {key: i, className: 'note-fret single-fretmark'}, '');
+        } else if (i === doubleFretmarks) {
+          fret = React.createElement('div', {key: i, className: 'note-fret double-fretmark'}, '');
+        } else {
+          fret = React.createElement('div', {key: i, className: 'note-fret'}, '');
+        }
+      } else {
+        fret = React.createElement('div', {key: i, className: 'note-fret'}, '');
+      }
+      frets.push(fret);
+    }
+    string = React.createElement('div', {key:j, className:'string'}, frets);
     fretboard.push(string);
   }
 };
+
+createFretboard();
 
 const App = () => {
   return (
