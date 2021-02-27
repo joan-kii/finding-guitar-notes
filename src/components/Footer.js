@@ -4,7 +4,7 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
-import BookIcon from '@material-ui/icons/Book';
+import { GiVikingHelmet } from 'react-icons/gi';
 
 const useStyles = makeStyles ({
   root: {
@@ -30,7 +30,7 @@ const Footer = () => {
         showLabel={true}
         href='https://www.theodinproject.com'
         target='_blank'
-        icon={<BookIcon />} />
+        icon={<GiVikingHelmet />} />
       <BottomNavigationAction className={classes.icons}
         label='Credits' 
         showLabel={true}
