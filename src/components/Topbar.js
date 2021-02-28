@@ -56,7 +56,7 @@ const Topbar = () => {
             Finding Guitar Notes
           </Typography>
           <Typography variant='h3' className={classes.exerciseName}>
-            Notes per String
+            
           </Typography>
           <IconButton 
             edge='end'

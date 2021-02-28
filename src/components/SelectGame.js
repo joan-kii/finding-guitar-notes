@@ -1,13 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import Note from '../assets/note.jpg';
 import Chord from '../assets/chord.jpg';
 
 // Buttons Selection
+
 const images = [
   {
     url: Note,
@@ -22,23 +22,15 @@ const images = [
 ];
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '10vh',
+  welcome: {
+    color: theme.palette.common.white,
+    padding: theme.spacing(12, 0, 12),
   },
-  paper: {
-    display: 'flex',
-    position: 'absolute',
-    height: '30%',
-    width: '30%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: '10vh',
+  text: {
+    fontSize: 20,
   },
   buttons: {
     display: 'flex',
-    position: 'absolute',
     flexWrap: 'wrap',
     minWidth: 200,
     width: 'auto',
@@ -116,13 +108,19 @@ const SelectGame = () => {
   const classes = useStyles();
 
   return (
-    <Container fixed className={classes.root}>
-      <Paper className={classes.paper} elevation={3}>
-        <Typography>
-          Welcome to Finding Guitar Notes!
-        </Typography>
-      </Paper>
-      <div className={classes.buttons}>
+    <main>
+      <div className={classes.welcome}>
+        <Container maxWidth='sm'>
+          <Typography component='h2' variant='h4' align='center'>
+            Welcome to Finding Guitar Notes!
+          </Typography>
+          <Typography className={classes.text} align='center'>
+            <p>Pick an exercise.</p>
+            <p>Don't forget to log in to track your progress.</p>
+          </Typography>
+        </ Container>
+      </div>
+      <Container className={classes.buttons}>
         {images.map((image) => (
           <ButtonBase 
             focusRipple
@@ -154,8 +152,8 @@ const SelectGame = () => {
             </span>
           </ButtonBase>
         ))}
-      </div>
-    </ Container>
+      </ Container>
+    </main>
   );
 }; 
 
