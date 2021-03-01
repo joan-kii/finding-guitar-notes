@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,9 +20,9 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 0.7,
-    fontSize: '1.5em',
-    cursor: 'context-menu'
+    color: theme.palette.common.white,
+    textDecoration: 'none',
+    cursor: 'pointer'
   },
   exerciseName: {
     flexGrow: 1,
@@ -52,9 +53,11 @@ const Topbar = () => {
             color='inherit'>
             <MenuIcon />
           </IconButton>
-          <Typography variant='h1' className={classes.title}>
-            Finding Guitar Notes
-          </Typography>
+          <Link className={classes.title} to='/'>
+            <Typography component='h1' variant='h5' >
+              Finding Guitar Notes
+            </Typography>
+          </Link>
           <Typography variant='h3' className={classes.exerciseName}>
             
           </Typography>

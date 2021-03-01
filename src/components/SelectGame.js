@@ -3,21 +3,24 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
-import Note from '../assets/note.jpg';
-import Chord from '../assets/chord.jpg';
+import NoteImage from '../assets/note.jpg';
+import ChordImage from '../assets/chord.jpg';
+import { Link } from 'react-router-dom';
 
 // Buttons Selection
 
 const images = [
   {
-    url: Note,
+    url: NoteImage,
     title: 'Notes',
-    width: 300
+    width: 300,
+    path: '/notes',
   },
   {
-    url: Chord,
+    url: ChordImage,
     title: 'Chords',
-    width: 300
+    width: 300,
+    path: 'chords',
   }
 ];
 
@@ -122,35 +125,37 @@ const SelectGame = () => {
       </div>
       <Container className={classes.buttons}>
         {images.map((image) => (
-          <ButtonBase 
-            focusRipple
-            key={image.title}
-            className={classes.image}
-            focusVisibleClassName={classes.focusVisible}
-            style={{
-              width: image.width,
-              margin: 20,
-            }}
-          >
-            <span 
-              className={classes.imageSrc}
+          <Link to={image.path}>
+            <ButtonBase 
+              focusRipple
+              key={image.title}
+              className={classes.image}
+              focusVisibleClassName={classes.focusVisible}
               style={{
-                backgroundImage: `url(${image.url})`,
+                width: image.width,
+                margin: 20,
               }}
-            />
-            <span className={classes.imageBackdrop} />
-            <span className={classes.imageButton}>
-              <Typography 
-                component='span'
-                variant='subtitle1'
-                color='inherit'
-                className={classes.imageTitle}
-              >
-                {image.title}
-                <span className={classes.imageMarked} />
-              </Typography>
-            </span>
-          </ButtonBase>
+            >
+              <span 
+                className={classes.imageSrc}
+                style={{
+                  backgroundImage: `url(${image.url})`,
+                }}
+              />
+              <span className={classes.imageBackdrop} />
+              <span className={classes.imageButton}>
+                <Typography 
+                  component='span'
+                  variant='subtitle1'
+                  color='inherit'
+                  className={classes.imageTitle}
+                >
+                  {image.title}
+                  <span className={classes.imageMarked} />
+                </Typography>
+              </span>
+            </ButtonBase>
+          </Link>
         ))}
       </ Container>
     </main>

@@ -1,11 +1,12 @@
 import React from 'react';
-import Infozone from './Infozone';
+import { fretboard, createFretboard } from '../modules/createFretboard';
 
-const Fretboard = ({ fretboard }) => {
+createFretboard();
+ 
+const Fretboard = () => {
   return (
     <div className='fretboard'>
       {fretboard}
-      <Infozone />
     </div>
   );
 }; 

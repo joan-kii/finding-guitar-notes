@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Topbar from './components/Topbar';
 import SelectGame from './components/SelectGame';
-import Fretboard from './components/Fretboard';
+import Chords from './components/Chords';
+import Notes from './components/Notes'; 
 import Footer from './components/Footer';
-import { fretboard, createFretboard } from './modules/createFretboard';
-
-createFretboard();
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const App = () => {
 
-  const [isGameSelected, setIsGameSelected] = useState(false);
-  console.log(isGameSelected)
-
   return (
     <div className="App">
-      <Topbar />
-      { isGameSelected ?
-        <Fretboard fretboard={fretboard} /> :
-        <SelectGame selectGame={setIsGameSelected}/> }
+      <Router>
+        <Topbar />
+        <Switch>
+          <Route exact path='/' component={SelectGame} />
+          <Route path='/chords' component={Chords} />
+          <Route path='/notes' component={Notes} />
+        </ Switch>
+      </ Router>
       <Footer />
     </div>
   );
