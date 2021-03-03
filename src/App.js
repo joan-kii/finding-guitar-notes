@@ -3,6 +3,7 @@ import Topbar from './components/Topbar';
 import SelectGame from './components/SelectGame';
 import Chords from './components/Chords';
 import Notes from './components/Notes'; 
+import ExercisesContextProvider from './components/Exercises';
 import String1Notes from './components/strings/String1Notes'; 
 import String2Notes from './components/strings/String2Notes'; 
 import String3Notes from './components/strings/String3Notes'; 
@@ -17,18 +18,20 @@ const App = () => {
   return (
     <div className="App">
       <Router>
-        <Topbar />
-        <Switch>
-          <Route exact path='/' component={SelectGame} />
-          <Route path='/notes' component={Notes} />
-          <Route path='/notes-string-1' component={String1Notes} />
-          <Route path='/notes-string-2' component={String2Notes} />
-          <Route path='/notes-string-3' component={String3Notes} />
-          <Route path='/notes-string-4' component={String4Notes} />
-          <Route path='/notes-string-5' component={String5Notes} />
-          <Route path='/notes-string-6' component={String6Notes} />
-          <Route path='/chords' component={Chords} />
-        </ Switch>
+        <ExercisesContextProvider>
+          <Topbar />
+          <Switch>
+            <Route exact path='/' component={SelectGame} />
+            <Route path='/notes' component={Notes} />
+            <Route path='/notes-string-1' component={String1Notes} />
+            <Route path='/notes-string-2' component={String2Notes} />
+            <Route path='/notes-string-3' component={String3Notes} />
+            <Route path='/notes-string-4' component={String4Notes} />
+            <Route path='/notes-string-5' component={String5Notes} />
+            <Route path='/notes-string-6' component={String6Notes} />
+            <Route path='/chords' component={Chords} />
+          </ Switch>
+        </ExercisesContextProvider> 
       </ Router>
       <Footer />
     </div>

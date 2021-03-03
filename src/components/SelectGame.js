@@ -125,10 +125,9 @@ const SelectGame = () => {
       </div>
       <Container className={classes.buttons}>
         {images.map((image) => (
-          <Link to={image.path}>
+          <Link to={image.path} key={image.title}>
             <ButtonBase 
               focusRipple
-              key={image.title}
               className={classes.image}
               focusVisibleClassName={classes.focusVisible}
               style={{

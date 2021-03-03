@@ -1,12 +1,11 @@
 import React from 'react';
-import { fretboard, createFretboard } from '../modules/createFretboard';
+import { createFretboard } from '../modules/createFretboard';
 
-createFretboard();
- 
-const Fretboard = () => {
+const Fretboard = ({ stringSelected, handleFretClick }) => {
+  
   return (
     <div className='fretboard'>
-      {fretboard}
+      {createFretboard(stringSelected, handleFretClick)}
     </div>
   );
 }; 
