@@ -58,7 +58,6 @@ body {
 .string:before {
   content: '';
   width: 100%;
-  /* height: calc(var(--string-height) * 1vh); */
   background: linear-gradient(#eee, #999);
   box-shadow: 13vh 5px 10px #806233;
   z-index: 1;
@@ -74,6 +73,10 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+}
+
+.note-fret:hover {
+  cursor: pointer;
 }
 
 .note-fret:first-child {
@@ -95,7 +98,7 @@ body {
   background: teal;
   z-index: 2;
   color: #eee;
-  opacity: 0.3;
+  opacity: 0;
 }
 
 .single-fretmark:after {
