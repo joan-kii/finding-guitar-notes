@@ -75,7 +75,7 @@ body {
   position: relative;
 }
 
-.note-fret:hover {
+.clickable {
   cursor: pointer;
 }
 

@@ -1,58 +1,39 @@
-import React, { useContext, useState } from 'react';
-/* import { ExercisesContext } from '../Exercises'; */
-import Fretboard from '../Fretboard';
+import React, { useState, useEffect } from 'react';
 import Infozone from '../Infozone';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import { createFretboard } from '../../modules/createFretboard';
+
+const fretboard = createFretboard();
+const string1 = fretboard[0].props.children;
+
+const handleClick = (event) => {
+  console.log(event.target);
+};
+
+for (let fret of string1) {
+  const newFret = React.cloneElement(fret, 
+    {className: `${[fret.props.className]} clickable`, 
+    onClick: handleClick, 
+    'aria-controls': 'simple-menu', 
+    'aria-haspopup': 'true'}, null);
+  if (fret.key === '13') {
+    const newLastFret = React.createElement('div', {key: fret.key, className: 'note-fret clickable'}, 
+      React.createElement('div', {key: fret.key, className: 'double-fretmark'}, ''));
+    string1.splice(fret.key - 1, 1, newLastFret); 
+  } else {
+    string1.splice(fret.key - 1, 1, newFret);
+  }
+}
 
 const String1Notes = () => {
-  const [noteChoices, setNoteChoices] = useState(null);
-
-  /* const { exercises } = useContext(ExercisesContext); */
-
-  const handleFretClick = (event) => {
-
-    setAnchorEl(event.currentTarget);
-
-    if (event.target.parentNode.classList.contains('string1')) {
-      setNoteChoices(
-        <Menu 
-          id='noteChoices'
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-          >
-            <MenuItem onClick={handleClose}>C</MenuItem>
-            <MenuItem onClick={handleClose}>D</MenuItem>
-            <MenuItem onClick={handleClose}>F</MenuItem>
-        </Menu>);
-    }
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const [anchorEl, setAnchorEl] = useState(
-    <Menu 
-      id='noteChoices'
-      keepMounted
-      onClose={handleClose}
-      >
-        <MenuItem onClick={handleClose}>C</MenuItem>
-        <MenuItem onClick={handleClose}>D</MenuItem>
-        <MenuItem onClick={handleClose}>F</MenuItem>
-    </Menu>);
-
   
+  const [String1Fretboard, setString1Fretboard] = useState(fretboard);
+  const [newString1, setNewString1] = useState(string1);
 
   return (
     <div>
-      <Fretboard 
-        stringSelected='1' 
-        handleFretClick={handleFretClick}
-        noteChoices={noteChoices} />
+      <div className='fretboard'>
+        {String1Fretboard}
+      </div>
       <Infozone />
     </div>
   );

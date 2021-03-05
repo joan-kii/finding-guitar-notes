@@ -7,7 +7,7 @@ const numberOfFrets = 13;
 const singleFretmarks = [4, 6, 8, 10];
 const doubleFretmarks = 13;
 
-const createFretboard = (stringSelected, handleFretClick) => {
+const createFretboard = () => {
   const fretboard = [];   
   let string;
   let fret;
@@ -16,15 +16,15 @@ const createFretboard = (stringSelected, handleFretClick) => {
     for (let i = 1; i <= numberOfFrets; i++) {
       if (j === 1) {
         if (singleFretmarks.includes(i)) {
-          fret = React.createElement('div', {key: i, className: 'note-fret single-fretmark', onClick: handleFretClick, 'aria-controls': 'simple-menu', 'aria-haspopup': 'true'}, '');
+          fret = React.createElement('div', {key: i, className: 'note-fret single-fretmark'}, '');
         } else if (i === doubleFretmarks) {
-          fret = React.createElement('div', {key: i, className: 'note-fret', onClick: handleFretClick, 'aria-controls': 'simple-menu', 'aria-haspopup': 'true'}, 
-            React.createElement('div', {key: i, className: 'double-fretmark', onClick: handleFretClick, 'aria-controls': 'simple-menu', 'aria-haspopup': 'true'}, ''));
+          fret = React.createElement('div', {key: i, className: 'note-fret'}, 
+            React.createElement('div', {key: i, className: 'double-fretmark'}, ''));
         } else {
-          fret = React.createElement('div', {key: i, className: 'note-fret', onClick: handleFretClick, 'aria-controls': 'simple-menu', 'aria-haspopup': 'true'}, '');
+          fret = React.createElement('div', {key: i, className: 'note-fret'}, '');
         }
       } else {
-        fret = React.createElement('div', {key: i, className: 'note-fret', onClick: handleFretClick}, '');
+        fret = React.createElement('div', {key: i, className: 'note-fret'}, '');
       }
       frets.push(fret);
     }

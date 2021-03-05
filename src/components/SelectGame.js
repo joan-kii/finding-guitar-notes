@@ -118,8 +118,10 @@ const SelectGame = () => {
             Welcome to Finding Guitar Notes!
           </Typography>
           <Typography className={classes.text} align='center'>
-            <p>Pick an exercise.</p>
-            <p>Don't forget to log in to track your progress.</p>
+            Pick an exercise.
+          </Typography>
+          <Typography className={classes.text} align='center'>
+            Don't forget to log in to track your progress.
           </Typography>
         </ Container>
       </div>
