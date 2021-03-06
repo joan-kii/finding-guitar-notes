@@ -11,24 +11,36 @@ const string1 = fretboard[0].props.children;
 const String1Notes = () => {
 
   const { exercises, setExercises } = useContext(ExercisesContext);
-  const notesString1 = ['E', 'F', 'F#-Gb', 'G', 'G#-Ab', 'A', 'A#-Bb', 'B', 'C', 'C#-Db', 'D', 'D#-Eb', 'e'];
-  const [String1Fretboard, setString1Fretboard] = useState(fretboard);
-  const [newString1, setNewString1] = useState(string1);
+  const notesString1 = ['E', 'F', 'F#/Gb', 'G', 'G#/Ab', 'A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'e'];
+  const [string1Fretboard, setString1Fretboard] = useState(fretboard);
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.target);
   };
-  const handleClose = () => {
+  const handleClose = (note) => {
     setAnchorEl(null);
   };
   const optionNotes = (anchorEl) => {
     if (anchorEl) {
-      const options = [anchorEl.id];
-      options.push(notesString1[Math.floor(Math.random()* 14)]);
-      options.push(notesString1[Math.floor(Math.random()* 14)]);
+      const options = randomNotes(anchorEl);
+      options.push(anchorEl.id);
+      options.sort();
+      console.log(options)
       return options;
     } else {
       return [];
+    }
+  };
+  const randomNotes = (anchorEl) => {
+    const notes = [];
+    const randomNote1 = notesString1[Math.floor(Math.random() * 13)];
+    const randomNote2 = notesString1[Math.floor(Math.random() * 13)];
+    if (randomNote1 !== anchorEl.id && randomNote1 !== randomNote2 && randomNote2 !== anchorEl.id) {
+      notes.push(randomNote1);
+      notes.push(randomNote2);
+      return notes;
+    } else {
+      randomNotes(anchorEl);
     }
   };
 
@@ -41,7 +53,8 @@ const String1Notes = () => {
       'aria-controls': 'simple-menu', 
       'aria-haspopup': 'true'}, null);
     if (fret.key === '13') {
-      const newLastFret = React.createElement('div', {id: notesString1[string1.indexOf(fret)], key: fret.key, className: 'note-fret clickable', onClick: handleClick}, 
+      const newLastFret = React.createElement('div', {id: notesString1[string1.indexOf(fret)], 
+        key: fret.key, className: 'note-fret clickable', onClick: handleClick}, 
         React.createElement('div', {key: fret.key, className: 'double-fretmark'}, ''));
       string1.splice(string1.indexOf(fret), 1, newLastFret); 
     } else {
@@ -52,20 +65,21 @@ const String1Notes = () => {
   return (
     <div>
       <div className='fretboard'>
-        {String1Fretboard}
+        {string1Fretboard}
         <Menu 
           id='simple-menu'
           anchorEl={anchorEl}
           keepMounted
           open={Boolean(anchorEl)}
-          onClose={handleClose} >
-          {optionNotes(anchorEl).map((note, index) => {
+          onClose={handleClose} 
+          >
+          {optionNotes(anchorEl).map((note) => (
             <MenuItem 
               key={note}
-              onClick={(event) => handleClick(event, note)}>
+              onClick={() => handleClose(note)}>
                 {note}
             </MenuItem>
-          })}
+          ))}
         </Menu>
       </div>
       <Infozone />
