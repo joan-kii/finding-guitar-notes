@@ -22,25 +22,18 @@ const String1Notes = () => {
   };
   const optionNotes = (anchorEl) => {
     if (anchorEl) {
-      const options = randomNotes(anchorEl);
-      options.push(anchorEl.id);
-      options.sort();
-      console.log(options)
-      return options;
+      const randomNote1 = notesString1[Math.floor(Math.random() * 13)];
+      const randomNote2 = notesString1[Math.floor(Math.random() * 13)];
+      if (randomNote1 !== randomNote2 && randomNote1 !== anchorEl.id && randomNote2 !== anchorEl.id) {
+        const options = [anchorEl.id];
+        options.push(randomNote1);
+        options.push(randomNote2);
+        return options.sort();
+      } else {
+        return optionNotes(anchorEl);
+      }
     } else {
       return [];
-    }
-  };
-  const randomNotes = (anchorEl) => {
-    const notes = [];
-    const randomNote1 = notesString1[Math.floor(Math.random() * 13)];
-    const randomNote2 = notesString1[Math.floor(Math.random() * 13)];
-    if (randomNote1 !== anchorEl.id && randomNote1 !== randomNote2 && randomNote2 !== anchorEl.id) {
-      notes.push(randomNote1);
-      notes.push(randomNote2);
-      return notes;
-    } else {
-      randomNotes(anchorEl);
     }
   };
 
