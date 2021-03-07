@@ -17,7 +17,8 @@ const String1Notes = () => {
   const handleClick = (event) => {
     setAnchorEl(event.target);
   };
-  const handleClose = (note) => {
+  const handleClose = (note, noteSelected) => {
+    console.log(note === noteSelected)
     setAnchorEl(null);
   };
   const optionNotes = (anchorEl) => {
@@ -69,7 +70,7 @@ const String1Notes = () => {
           {optionNotes(anchorEl).map((note) => (
             <MenuItem 
               key={note}
-              onClick={() => handleClose(note)}>
+              onClick={(event) => handleClose(anchorEl.id, event.target.textContent)}>
                 {note}
             </MenuItem>
           ))}
