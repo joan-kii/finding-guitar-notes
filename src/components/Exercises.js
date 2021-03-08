@@ -7,42 +7,40 @@ const ExercisesContextProvider = (props) => {
     {
       userSigned: false,
       allExercisesCompleted: false,
-      notes: ['A', 'A#-Bb', 'B', 'C', 'C#-Db', 'D', 'D#-Eb', 'E', 'F', 'F#-Gb', 'G', 'G#-Ab']
     },
     {
-      notesExercises: {
-        string_1: {
-          0: {completed: false, note: 'E'},
-          1: {completed: false, note: 'F'},
-          2: {completed: false, note: 'F#-Gb'},
-          3: {completed: false, note: 'G'},
-          4: {completed: false, note: 'G#-Ab'},
-          5: {completed: false, note: 'A'},
-          6: {completed: false, note: 'A#-Bb'},
-          7: {completed: false, note: 'B'},
-          8: {completed: false, note: 'C'},
-          9: {completed: false, note: 'C#-Db'},
-          10: {completed: false, note: 'D'},
-          11: {completed: false, note: 'D#-Eb'},
-          string_1Completed: false
-        },
-        string_2: {
+      string_1: [
+        {fret: 0, completed: false, note: 'E'},
+        {fret: 1, completed: false, note: 'F'},
+        {fret: 2, completed: false, note: 'F#/Gb'},
+        {fret: 3, completed: false, note: 'G'},
+        {fret: 4, completed: false, note: 'G#/Ab'},
+        {fret: 5, completed: false, note: 'A'},
+        {fret: 6, completed: false, note: 'A#/Bb'},
+        {fret: 7, completed: false, note: 'B'},
+        {fret: 8, completed: false, note: 'C'},
+        {fret: 9, completed: false, note: 'C#/Db'},
+        {fret: 10, completed: false, note: 'D'},
+        {fret: 11, completed: false, note: 'D#/Eb'},
+        {fret: 12, completed: false, note: 'e'},
+        {string_1Completed: false},
+      ],
+      string_2: [
 
-        },
-        string_3: {
+      ],
+      string_3: [
 
-        },
-        string_4: {
+      ],
+      string_4: [
 
-        },
-        string_5: {
+      ],
+      string_5: [
 
-        },
-        string_6: {
-
-        },
-        notesExcersisesCompleted: false,
-      }
+      ],
+      string_6: [
+        
+      ],
+      notesExcersisesCompleted: false,
     }, 
     {
       chordExercises: {
