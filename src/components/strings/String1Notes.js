@@ -4,21 +4,38 @@ import Infozone from '../Infozone';
 import { createFretboard } from '../../modules/createFretboard';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 const fretboard = createFretboard();
 const string1 = fretboard[0].props.children;
+
+const Alert = (props) => {
+  return <MuiAlert elevation={6} variant='filled' {...props} />
+};
 
 const String1Notes = () => {
 
   const { exercises, setExercises } = useContext(ExercisesContext);
   const notesString1 = ['E', 'F', 'F#/Gb', 'G', 'G#/Ab', 'A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'e'];
+
   const [string1Fretboard, setString1Fretboard] = useState(fretboard);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showFailMessage, setShowFailMessage] = useState(false);
+
+  const closeMessage = () => {
+    setShowSuccessMessage(false);
+    setShowFailMessage(false);
+  };
+
   const handleClick = (event) => {
     setAnchorEl(event.target);
   };
   const handleClose = (note, noteSelected) => {
-    console.log(note === noteSelected)
+    if (noteSelected !== 'backdropClick') {
+      note === noteSelected ? setShowSuccessMessage(true) : setShowFailMessage(true);
+    }
     setAnchorEl(null);
   };
   const optionNotes = (anchorEl) => {
@@ -75,6 +92,12 @@ const String1Notes = () => {
             </MenuItem>
           ))}
         </Menu>
+        <Snackbar open={showSuccessMessage} autoHideDuration={2000} onClose={closeMessage}>
+          <Alert severity='success'>That's rigth!</Alert>
+        </Snackbar>
+        <Snackbar open={showFailMessage} autoHideDuration={2000} onClose={closeMessage}>
+          <Alert severity='error'>Try again</Alert>
+        </Snackbar>
       </div>
       <Infozone />
     </div>
