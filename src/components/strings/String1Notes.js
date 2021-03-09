@@ -18,7 +18,7 @@ const String1Notes = () => {
 
   const { exercises, setExercises } = useContext(ExercisesContext);
   const notesString1 = ['E', 'F', 'F#/Gb', 'G', 'G#/Ab', 'A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'e'];
-  const trackingNotes = exercises[1].notesExercises.string_1;
+  const trackingString1 = exercises.notesExercises.string_1;
 
   const [string1Fretboard, setString1Fretboard] = useState(fretboard);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -33,14 +33,19 @@ const String1Notes = () => {
   const handleClick = (event) => {
     setAnchorEl(event.target);
   };
+
   const handleClose = (note, noteSelected) => {
-    if (noteSelected !== 'backdropClick') {
-      const fretIndex = notesString1.indexOf(noteSelected);
-      setExercises([...exercises, {... {completed: true}}]);
-      note === noteSelected ? setShowSuccessMessage(true) : setShowFailMessage(true);
+    if (noteSelected !== 'backdropClick' && note === noteSelected) {
+      setExercises({...exercises, notesExercises: string1[noteSelected], completed: true});
+      console.log(trackingString1);
+      console.log(trackingString1[noteSelected].completed);
+      setShowSuccessMessage(true);
+    } else {
+      setShowFailMessage(true);
     }
     setAnchorEl(null);
   };
+
   const optionNotes = (anchorEl) => {
     if (anchorEl) {
       const randomNote1 = notesString1[Math.floor(Math.random() * 13)];
