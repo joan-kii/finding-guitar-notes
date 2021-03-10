@@ -1,12 +1,12 @@
 import React from 'react';
 import Fretboard from './Fretboard';
-import Infozone from './Infozone';
+import InfozoneChordNotes from './InfozoneChordNotes';
 
 const Chords = () => {
   return (
     <div>
       <Fretboard />
-      <Infozone />
+      <InfozoneChordNotes />
     </div>
   );
 }; 

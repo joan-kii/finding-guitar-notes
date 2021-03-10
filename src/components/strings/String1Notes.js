@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { ExercisesContext } from '../Exercises';
-import Infozone from '../Infozone';
+import InfozoneStringNotes from '../InfozoneStringNotes';
 import { createFretboard } from '../../modules/createFretboard';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -16,11 +16,9 @@ const Alert = (props) => {
 
 const String1Notes = () => {
 
-  const { exercises, setExercises } = useContext(ExercisesContext);
+  const { setExercises } = useContext(ExercisesContext);
   const notesString1 = ['E', 'F', 'F#/Gb', 'G', 'G#/Ab', 'A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'e'];
-  const trackingString1 = exercises.notesExercises.string_1;
 
-  const [string1Fretboard, setString1Fretboard] = useState(fretboard);
   const [anchorEl, setAnchorEl] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailMessage, setShowFailMessage] = useState(false);
@@ -36,9 +34,10 @@ const String1Notes = () => {
 
   const handleClose = (note, noteSelected) => {
     if (noteSelected !== 'backdropClick' && note === noteSelected) {
-      setExercises({...exercises, notesExercises: string1[noteSelected], completed: true});
-      console.log(trackingString1);
-      console.log(trackingString1[noteSelected].completed);
+      setExercises((prevState) => {
+        prevState.notesExercises.string_1[noteSelected].completed = true;
+        return ({...prevState});
+      });
       setShowSuccessMessage(true);
     } else {
       setShowFailMessage(true);
@@ -84,7 +83,7 @@ const String1Notes = () => {
   return (
     <div>
       <div className='fretboard'>
-        {string1Fretboard}
+        {fretboard}
         <Menu 
           id='simple-menu'
           anchorEl={anchorEl}
@@ -107,7 +106,7 @@ const String1Notes = () => {
           <Alert severity='error'>Try again</Alert>
         </Snackbar>
       </div>
-      <Infozone />
+      <InfozoneStringNotes notesString={notesString1}/>
     </div>
   );
 }; 

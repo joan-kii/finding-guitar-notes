@@ -1,12 +1,13 @@
 import React from 'react';
 import Fretboard from '../Fretboard';
-import Infozone from '../Infozone';
+import InfozoneStringNotes from '../InfozoneStringNotes';
+
 
 const String3Notes = () => {
   return (
     <div>
       <Fretboard />
-      <Infozone />
+      <InfozoneStringNotes />
     </div>
   );
 }; 
