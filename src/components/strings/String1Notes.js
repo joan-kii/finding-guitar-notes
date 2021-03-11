@@ -16,13 +16,15 @@ const Alert = (props) => {
 
 const String1Notes = () => {
 
-  const { setExercises } = useContext(ExercisesContext);
   const notesString1 = ['E', 'F', 'F#/Gb', 'G', 'G#/Ab', 'A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'e'];
+  const { exercises, setExercises, setActualExercise } = useContext(ExercisesContext);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailMessage, setShowFailMessage] = useState(false);
 
+  setActualExercise(exercises.notesExercises.string_1.title);
+  
   const closeMessage = () => {
     setShowSuccessMessage(false);
     setShowFailMessage(false);
@@ -106,7 +108,9 @@ const String1Notes = () => {
           <Alert severity='error'>Try again</Alert>
         </Snackbar>
       </div>
-      <InfozoneStringNotes notesString={notesString1}/>
+      <InfozoneStringNotes 
+        notesString={notesString1}
+        string= 'string_1' />
     </div>
   );
 }; 

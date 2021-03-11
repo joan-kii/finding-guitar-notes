@@ -3,6 +3,7 @@ import React, { useState, createContext } from 'react';
 export const ExercisesContext = createContext();
 
 const ExercisesContextProvider = (props) => {
+  const [actualExercise, setActualExercise] = useState(null);
   const [exercises, setExercises] = useState({
     general: {
       userSigned: false,
@@ -24,6 +25,7 @@ const ExercisesContextProvider = (props) => {
         'D#/Eb': {completed: false},
         'e': {completed: false},
         string_1Completed: {completed: false},
+        title: 'Notes String 1',
       },
       string_2: {},
       string_3: {},
@@ -37,7 +39,8 @@ const ExercisesContextProvider = (props) => {
       },
   });
   return (
-    <ExercisesContext.Provider value={{exercises, setExercises}}>
+    <ExercisesContext.Provider 
+      value={{exercises, setExercises, actualExercise, setActualExercise}}>
       {props.children}
     </ExercisesContext.Provider>
   );

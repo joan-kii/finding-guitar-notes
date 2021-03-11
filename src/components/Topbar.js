@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ExercisesContext } from './Exercises';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -21,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
+    flexGrow: 0.7,
     color: theme.palette.common.white,
     textDecoration: 'none',
     cursor: 'pointer'
   },
   exerciseName: {
     flexGrow: 1,
-    justifyContent: 'center',
     fontSize: '1.5em',
     cursor: 'context-menu',
   }
@@ -37,10 +38,9 @@ const Topbar = () => {
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
+  const { actualExercise } = useContext(ExercisesContext);
   const handleAuth = (event) => {
-    console.log(event);
     setAnchorEl(event.currentTarget);
-    console.log(anchorEl)
   };
   
   return (
@@ -64,7 +64,7 @@ const Topbar = () => {
             </Typography>
           </Link>
           <Typography variant='h3' className={classes.exerciseName}>
-            
+            {actualExercise}
           </Typography>
           <IconButton 
             edge='end'
