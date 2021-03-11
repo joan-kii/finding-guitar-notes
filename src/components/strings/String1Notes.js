@@ -24,7 +24,7 @@ const String1Notes = () => {
   const [showFailMessage, setShowFailMessage] = useState(false);
 
   setActualExercise(exercises.notesExercises.string_1.title);
-  
+
   const closeMessage = () => {
     setShowSuccessMessage(false);
     setShowFailMessage(false);
@@ -47,6 +47,8 @@ const String1Notes = () => {
     setAnchorEl(null);
   };
 
+  // Ramdom choice notes
+  
   const optionNotes = (anchorEl) => {
     if (anchorEl) {
       const randomNote1 = notesString1[Math.floor(Math.random() * 13)];
