@@ -88,6 +88,18 @@ body {
   color: #eee;
 }
 
+.correct:before {
+  content: attr(data-before);
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  line-height: 33px;
+  text-align: center;
+  background: teal;
+  z-index: 2;
+  color: #eee;
+}
+
 .note-fret:first-child {
   background: #161717;
   min-width: 13vh;

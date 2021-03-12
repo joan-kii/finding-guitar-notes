@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { ExercisesContext } from '../Exercises';
 import InfozoneStringNotes from '../InfozoneStringNotes';
 import { createFretboard } from '../../modules/createFretboard';
@@ -23,7 +23,9 @@ const String1Notes = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailMessage, setShowFailMessage] = useState(false);
 
-  setActualExercise(exercises.notesExercises.string_1.title);
+  useEffect(() => {
+    setActualExercise(exercises.notesExercises.string_1.title);
+  });
 
   const closeMessage = () => {
     setShowSuccessMessage(false);
@@ -34,8 +36,13 @@ const String1Notes = () => {
     setAnchorEl(event.target);
   };
 
-  const handleClose = (note, noteSelected) => {
+  const handleClose = (anchorEl, noteSelected) => {
+    
+    const note = anchorEl.id;
     if (noteSelected !== 'backdropClick' && note === noteSelected) {
+      anchorEl.classList.remove('clickable');
+      anchorEl.classList.add('correct');
+      anchorEl.setAttribute('data-before', note);
       setExercises((prevState) => {
         prevState.notesExercises.string_1[noteSelected].completed = true;
         return ({...prevState});
@@ -98,7 +105,7 @@ const String1Notes = () => {
           {optionNotes(anchorEl).map((note) => (
             <MenuItem 
               key={note}
-              onClick={(event) => handleClose(anchorEl.id, event.target.textContent)}>
+              onClick={(event) => handleClose(anchorEl, event.target.textContent)}>
                 {note}
             </MenuItem>
           ))}
