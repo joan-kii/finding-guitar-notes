@@ -115,6 +115,13 @@ const ExercisesContextProvider = (props) => {
       notesExcersisesCompleted: false,
     }, 
     chordExercises: {
+      'A': {completed: false},
+      'B': {completed: false},
+      'C': {completed: false},
+      'D': {completed: false},
+      'E': {completed: false},
+      'F': {completed: false},
+      'G': {completed: false},
       chordExercisesCompleted: false,
       },
   });
