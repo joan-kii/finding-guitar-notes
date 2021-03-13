@@ -7,7 +7,6 @@ const ExercisesContextProvider = (props) => {
   const [exercises, setExercises] = useState({
     general: {
       userSigned: false,
-      allExercisesCompleted: false,
     },
     notesExercises: {
       string_1: {
@@ -24,8 +23,8 @@ const ExercisesContextProvider = (props) => {
         'D': {completed: false},
         'D#/Eb': {completed: false},
         'e': {completed: false},
-        string_1Completed: {completed: false},
-        title: 'Notes String 1',
+        completed: false,
+        title: 'String 1',
       },
       string_2: {
         'B': {completed: false},
@@ -42,7 +41,7 @@ const ExercisesContextProvider = (props) => {
         'A#/Bb': {completed: false},
         'b': {completed: false},
         string_2Completed: {completed: false},
-        title: 'Notes String 2',
+        title: 'String 2',
       },
       string_3: {
         'G': {completed: false},
@@ -59,7 +58,7 @@ const ExercisesContextProvider = (props) => {
         'F#/Gb': {completed: false},
         'g': {completed: false},
         string_3Completed: {completed: false},
-        title: 'Notes String 3',
+        title: 'String 3',
       },
       string_4: {
         'D': {completed: false},
@@ -76,7 +75,7 @@ const ExercisesContextProvider = (props) => {
         'C#/Db': {completed: false},
         'd': {completed: false},
         string_4Completed: {completed: false},
-        title: 'Notes String 4',
+        title: 'String 4',
       },
       string_5: {
         'A': {completed: false},
@@ -93,7 +92,7 @@ const ExercisesContextProvider = (props) => {
         'G#/Ab': {completed: false},
         'a': {completed: false},
         string_5Completed: {completed: false},
-        title: 'Notes String 5',
+        title: 'String 5',
       },
       string_6: {
         'E': {completed: false},
@@ -110,19 +109,17 @@ const ExercisesContextProvider = (props) => {
         'D#/Eb': {completed: false},
         'e': {completed: false},
         string_6Completed: {completed: false},
-        title: 'Notes String 6',
+        title: 'String 6',
       },
-      notesExcersisesCompleted: false,
     }, 
     chordExercises: {
-      'A': {completed: false},
-      'B': {completed: false},
-      'C': {completed: false},
-      'D': {completed: false},
-      'E': {completed: false},
-      'F': {completed: false},
-      'G': {completed: false},
-      chordExercisesCompleted: false,
+      'A': {title: 'Chord A', completed: false},
+      'B': {title: 'Chord B', completed: false},
+      'C': {title: 'Chord C', completed: false},
+      'D': {title: 'Chord D', completed: false},
+      'E': {title: 'Chord E', completed: false},
+      'F': {title: 'Chord F', completed: false},
+      'G': {title: 'Chord G', completed: false},
       },
   });
   return (

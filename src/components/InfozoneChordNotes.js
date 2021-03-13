@@ -41,12 +41,18 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(6),
     justifyContent: 'center',
   }, 
+  infoChord: {
+    display: 'flex',
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+    justifyContent: 'center',
+  },
   chip: {
     margin: theme.spacing(1)
   }
 }));
 
-const InfozoneStringNotes = ({ chord }) => {
+const InfozoneStringNotes = ({ notesChord, chord }) => {
   
   const { exercises, actualExercise } = useContext(ExercisesContext);
   const classes = useStyles();
@@ -56,10 +62,20 @@ const InfozoneStringNotes = ({ chord }) => {
       <Container className={classes.container}>
         <Paper className={classes.paper}>
           <Typography className={classes.title}>
-            {actualExercise}
+            {`Find the notes of Major ${actualExercise}`}
           </Typography>
           <MuiThemeProvider theme={theme}>
             <Container className={classes.results}>
+              {notesChord.map((fret, index) => {
+                return <Chip 
+                  className={classes.chip} 
+                  size='small' 
+                  label={`String ${index + 1}`} 
+                  color={fret ? 'primary' : 'default'}
+                  icon={fret ? <DoneIcon /> : null} />
+              })}
+            </Container>
+            <Container className={classes.infoChord}>
               <Chip 
                 className={classes.chip} 
                 size='medium' 

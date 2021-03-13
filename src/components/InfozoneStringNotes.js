@@ -41,12 +41,18 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(6),
     justifyContent: 'center',
   }, 
+  infoString: {
+    display: 'flex',
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+    justifyContent: 'center',
+  },
   chip: {
     margin: theme.spacing(1)
   }
 }));
 
-const InfozoneStringNotes = ({ notesString, string }) => {
+const InfozoneStringNotes = ({ notesString, string, rightNotes }) => {
   
   const { exercises, actualExercise } = useContext(ExercisesContext);
   const classes = useStyles();
@@ -56,7 +62,7 @@ const InfozoneStringNotes = ({ notesString, string }) => {
       <Container className={classes.container}>
         <Paper className={classes.paper}>
           <Typography className={classes.title}>
-            {actualExercise}
+            {`Find the notes in the ${actualExercise}`}
           </Typography>
           <MuiThemeProvider theme={theme}>
             <Container className={classes.results}>
@@ -138,6 +144,14 @@ const InfozoneStringNotes = ({ notesString, string }) => {
                 label='Fret 12' 
                 color={exercises.notesExercises[string][notesString[12]].completed ? 'primary' : 'default'}
                 icon={exercises.notesExercises[string][notesString[12]].completed ? <DoneIcon /> : null} />
+            </Container>
+            <Container className={classes.infoString}>
+              <Chip 
+                className={classes.chip} 
+                size='medium' 
+                label={`${exercises.notesExercises[string].title}`} 
+                color={rightNotes === 13 ? 'primary' : 'default'}
+                icon={rightNotes === 13  ? <DoneIcon /> : null} />
             </Container>
           </MuiThemeProvider>
         </Paper>

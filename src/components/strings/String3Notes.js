@@ -22,6 +22,8 @@ const String3Notes = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailMessage, setShowFailMessage] = useState(false);
+  const [rightNotes, setRightNotes] = useState(0);
+
 
   useEffect(() => {
     setActualExercise(exercises.notesExercises.string_3.title);
@@ -47,6 +49,7 @@ const String3Notes = () => {
         prevState.notesExercises.string_3[noteSelected].completed = true;
         return ({...prevState});
       });
+      setRightNotes(rightNotes + 1);
       setShowSuccessMessage(true);
     } else {
       setShowFailMessage(true);
@@ -112,7 +115,8 @@ const String3Notes = () => {
       </div>
       <InfozoneStringNotes 
         notesString={notesString3}
-        string= 'string_3' />
+        string= 'string_3'
+        rightNotes={rightNotes} />
     </div>
   );
 }; 
