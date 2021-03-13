@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const InfozoneStringNotes = ({ notesChord, chord }) => {
+const InfozoneChordNotes = ({ notesChord, chord, rightNotes }) => {
   
   const { exercises, actualExercise } = useContext(ExercisesContext);
   const classes = useStyles();
@@ -71,8 +71,8 @@ const InfozoneStringNotes = ({ notesChord, chord }) => {
                   className={classes.chip} 
                   size='small' 
                   label={`String ${index + 1}`} 
-                  color={fret ? 'primary' : 'default'}
-                  icon={fret ? <DoneIcon /> : null} />
+                  color={rightNotes[index] ? 'primary' : 'default'}
+                  icon={rightNotes[index] ? <DoneIcon /> : null} />
               })}
             </Container>
             <Container className={classes.infoChord}>
@@ -90,4 +90,4 @@ const InfozoneStringNotes = ({ notesChord, chord }) => {
   );
 }; 
 
-export default InfozoneStringNotes;
+export default InfozoneChordNotes;

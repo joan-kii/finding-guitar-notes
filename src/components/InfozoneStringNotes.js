@@ -145,7 +145,7 @@ const InfozoneStringNotes = ({ notesString, string, rightNotes }) => {
                 color={exercises.notesExercises[string][notesString[12]].completed ? 'primary' : 'default'}
                 icon={exercises.notesExercises[string][notesString[12]].completed ? <DoneIcon /> : null} />
             </Container>
-            <Container className={classes.infoString}>
+            <Container className={classes.infoString} >
               <Chip 
                 className={classes.chip} 
                 size='medium' 

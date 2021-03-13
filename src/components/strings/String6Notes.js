@@ -7,7 +7,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
-const fretboard = createFretboard();
+const isClickable = false;
+const fretboard = createFretboard(isClickable);
 const string6 = fretboard[5].props.children;
 
 const Alert = (props) => {

@@ -7,7 +7,9 @@ const numberOfFrets = 13;
 const singleFretmarks = [4, 6, 8, 10];
 const doubleFretmarks = 13;
 
-const createFretboard = () => {
+const createFretboard = (isClickable) => {
+  const fretClassName = isClickable ? 'note-fret clickable' : 'note-fret';
+  const singleFretmarkClassName = isClickable ? 'note-fret single-fretmark clickable ' : 'note-fret single-fretmark';
   const fretboard = [];   
   let string;
   let fret;
@@ -16,15 +18,15 @@ const createFretboard = () => {
     for (let i = 1; i <= numberOfFrets; i++) {
       if (j === 1) {
         if (singleFretmarks.includes(i)) {
-          fret = React.createElement('div', {key: i, className: 'note-fret single-fretmark'}, '');
+          fret = React.createElement('div', {key: i, className: singleFretmarkClassName}, '');
         } else if (i === doubleFretmarks) {
-          fret = React.createElement('div', {key: i, className: 'note-fret'}, 
+          fret = React.createElement('div', {key: i, className: fretClassName}, 
             React.createElement('div', {key: i, className: 'double-fretmark'}, ''));
         } else {
-          fret = React.createElement('div', {key: i, className: 'note-fret'}, '');
+          fret = React.createElement('div', {key: i, className: fretClassName}, '');
         }
       } else {
-        fret = React.createElement('div', {key: i, className: 'note-fret'}, '');
+        fret = React.createElement('div', {key: i, className: fretClassName}, '');
       }
       frets.push(fret);
     }
