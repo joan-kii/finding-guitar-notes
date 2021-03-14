@@ -17,9 +17,9 @@ const ChordA = () => {
   const chord = 'A';
   const fretsChordA = ['0', '2', '2', '2', '0'];
   const notesChordA = ['E', 'C#/Db', 'A', 'E', 'A'];
+  const [rightNotes, setRightNotes] = useState([0, 0, 0, 0, 0]);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailMessage, setShowFailMessage] = useState(false);
-  const [rightNotes, setRightNotes] =useState([0, 0, 0, 0, 0]);
   const { exercises, setExercises, setActualExercise } = useContext(ExercisesContext);
   useEffect(() => {
     setActualExercise(exercises.chordExercises[chord].title);
@@ -29,22 +29,23 @@ const ChordA = () => {
     const anchorEl = event.target;
     const stringSelected = anchorEl.parentElement.classList[1].slice(-1);
     const fretSelected = anchorEl.id;
-    if (fretsChordA[stringSelected - 1] === fretSelected){
+    if (fretsChordA[stringSelected - 1] === fretSelected) {
+      rightNotes[stringSelected - 1] = 1;
+      setRightNotes(rightNotes);
       anchorEl.classList.remove('clickable');
       anchorEl.classList.add('correct');
       anchorEl.setAttribute('data-before', notesChordA[stringSelected -1]);
-      setRightNotes([0, 0, 0, 0, 1]);
-      setShowSuccessMessage(true);
+      if (!exercises.chordExercises[chord].completed) setShowSuccessMessage(true);
+      if (!rightNotes.includes(0)) {
+        setExercises((prevState) => {
+          prevState.chordExercises[chord].completed = true;
+          return ({...prevState});
+        });
+      }
     } else {
-      setShowFailMessage(true);
+      if (!exercises.chordExercises[chord].completed) setShowFailMessage(true);
     }
   };
-  console.log(rightNotes)
-  if (rightNotes === [1, 1, 1, 1, 1])
-    setExercises((prevState) => {
-      prevState.chordExercises[chord].completed = true;
-      return ({...prevState});
-    });
 
   const closeMessage = () => {
     setShowSuccessMessage(false);
@@ -76,7 +77,7 @@ const ChordA = () => {
       <InfozoneChordNotes 
         notesChord={fretsChordA}
         chord={chord} 
-        rightNotes />
+        rightNotes={rightNotes} />
     </div>
   );
 }; 
