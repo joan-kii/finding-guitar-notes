@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const InfozoneStringNotes = ({ notesString, string, rightNotes }) => {
+const InfozoneStringNotes = ({ notesString, string }) => {
   
   const { exercises, actualExercise } = useContext(ExercisesContext);
   const classes = useStyles();
@@ -150,8 +150,8 @@ const InfozoneStringNotes = ({ notesString, string, rightNotes }) => {
                 className={classes.chip} 
                 size='medium' 
                 label={`${exercises.notesExercises[string].title}`} 
-                color={rightNotes === 13 ? 'primary' : 'default'}
-                icon={rightNotes === 13  ? <DoneIcon /> : null} />
+                color={exercises.notesExercises[string].completed ? 'primary' : 'default'}
+                icon={exercises.notesExercises[string].completed  ? <DoneIcon /> : null} />
             </Container>
           </MuiThemeProvider>
         </Paper>

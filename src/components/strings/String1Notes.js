@@ -38,6 +38,15 @@ const String1Notes = () => {
     setAnchorEl(event.target);
   };
 
+  // actualizar string completed
+  //if (rightNotes === 13) {
+  //   setExercises((prevState) => {
+  //    prevState.notesExercises.string_1.completed = true;
+  //    return ({...prevState});
+  //  })
+  //}
+  // actualizar string completed
+
   const handleClose = (anchorEl, noteSelected) => {
     
     const note = anchorEl.id;
@@ -122,8 +131,7 @@ const String1Notes = () => {
       </div>
       <InfozoneStringNotes 
         notesString={notesString1}
-        string= 'string_1'
-        rightNotes={rightNotes} />
+        string= 'string_1' />
     </div>
   );
 }; 

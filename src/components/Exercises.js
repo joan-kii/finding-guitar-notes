@@ -40,7 +40,7 @@ const ExercisesContextProvider = (props) => {
         'A': {completed: false},
         'A#/Bb': {completed: false},
         'b': {completed: false},
-        string_2Completed: {completed: false},
+        completed: false,
         title: 'String 2',
       },
       string_3: {
@@ -57,7 +57,7 @@ const ExercisesContextProvider = (props) => {
         'F': {completed: false},
         'F#/Gb': {completed: false},
         'g': {completed: false},
-        string_3Completed: {completed: false},
+        completed: false,
         title: 'String 3',
       },
       string_4: {
@@ -74,7 +74,7 @@ const ExercisesContextProvider = (props) => {
         'C': {completed: false},
         'C#/Db': {completed: false},
         'd': {completed: false},
-        string_4Completed: {completed: false},
+        completed: false,
         title: 'String 4',
       },
       string_5: {
@@ -91,7 +91,7 @@ const ExercisesContextProvider = (props) => {
         'G': {completed: false},
         'G#/Ab': {completed: false},
         'a': {completed: false},
-        string_5Completed: {completed: false},
+        completed: false,
         title: 'String 5',
       },
       string_6: {
@@ -108,7 +108,7 @@ const ExercisesContextProvider = (props) => {
         'D': {completed: false},
         'D#/Eb': {completed: false},
         'e': {completed: false},
-        string_6Completed: {completed: false},
+        completed: false,
         title: 'String 6',
       },
     }, 
