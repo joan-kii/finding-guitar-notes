@@ -35,25 +35,27 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Topbar = () => {
+const Topbar = ({ open, setOpen}) => {
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const { actualExercise } = useContext(ExercisesContext);
+
   const handleAuth = (event) => {
     setAnchorEl(event.currentTarget);
   };
   
   return (
     <div className={classes.root}>
-      <AppBar position='static'>
+      <AppBar 
+        position='static'>
         <Toolbar className={classes.toolbar}>
           <IconButton 
             edge='start' 
-            aria-label='menu'
+            aria-label='open drawer'
             className={classes.menuButton}
             color='inherit'>
-            <MenuIcon />
+            <MenuIcon  />
           </IconButton>
           <Link className={classes.title} to='/'>
             <Typography 
