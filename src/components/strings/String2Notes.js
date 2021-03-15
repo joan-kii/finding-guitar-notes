@@ -39,6 +39,15 @@ const String2Notes = () => {
     setAnchorEl(event.target);
   };
 
+  useEffect(() => {
+    if (rightNotes === 13) {
+       setExercises((prevState) => {
+        prevState.notesExercises.string_2.completed = true;
+        return ({...prevState});
+      })
+    }
+  }, [rightNotes, setExercises]);
+
   const handleClose = (anchorEl, noteSelected) => {
     
     const note = anchorEl.id;
@@ -116,8 +125,7 @@ const String2Notes = () => {
       </div>
       <InfozoneStringNotes 
         notesString={notesString2}
-        string= 'string_2'
-        rightNotes={rightNotes} />
+        string= 'string_2' />
     </div>
   );
 }; 

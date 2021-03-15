@@ -39,6 +39,15 @@ const String4Notes = () => {
     setAnchorEl(event.target);
   };
 
+  useEffect(() => {
+    if (rightNotes === 13) {
+       setExercises((prevState) => {
+        prevState.notesExercises.string_4.completed = true;
+        return ({...prevState});
+      })
+    }
+  }, [rightNotes, setExercises]);
+
   const handleClose = (anchorEl, noteSelected) => {
     
     const note = anchorEl.id;

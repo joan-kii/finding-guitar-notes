@@ -12,6 +12,7 @@ import { motion } from 'framer-motion';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    display: 'flex',
     flexGrow: 1,
   }, 
   toolbar: {

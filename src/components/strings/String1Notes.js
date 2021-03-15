@@ -38,14 +38,15 @@ const String1Notes = () => {
     setAnchorEl(event.target);
   };
 
-  // actualizar string completed
-  //if (rightNotes === 13) {
-  //   setExercises((prevState) => {
-  //    prevState.notesExercises.string_1.completed = true;
-  //    return ({...prevState});
-  //  })
-  //}
-  // actualizar string completed
+  useEffect(() => {
+    if (rightNotes === 13) {
+       setExercises((prevState) => {
+        prevState.notesExercises.string_1.completed = true;
+        return ({...prevState});
+      })
+    }
+  }, [rightNotes, setExercises]);
+  
 
   const handleClose = (anchorEl, noteSelected) => {
     
