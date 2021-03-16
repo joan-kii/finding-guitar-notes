@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { ExercisesContext } from './Exercises';
+import LeftMenu from './LeftMenu';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -35,14 +36,19 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Topbar = ({ open, setOpen}) => {
+const Topbar = () => {
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [openDrawer, setOpenDrawer] = useState(false);
   const { actualExercise } = useContext(ExercisesContext);
 
   const handleAuth = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const openMenu = () => {
+    setOpenDrawer(true);
   };
   
   return (
@@ -52,6 +58,7 @@ const Topbar = ({ open, setOpen}) => {
         <Toolbar className={classes.toolbar}>
           <IconButton 
             edge='start' 
+            onClick={openMenu}
             aria-label='open drawer'
             className={classes.menuButton}
             color='inherit'>
@@ -80,6 +87,7 @@ const Topbar = ({ open, setOpen}) => {
           </IconButton>
         </Toolbar>
       </AppBar>
+      <LeftMenu open={openDrawer} setOpen={setOpenDrawer} />
     </div>
   );
 }; 

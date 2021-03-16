@@ -9,6 +9,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import { SettingsInputComponent, SettingsPowerRounded } from '@material-ui/icons';
 
 const stringPaths = {
   'String 1': '/notes-string-1',
@@ -28,26 +29,29 @@ const chordPaths = {
   'Chord G': '/chord-g',
 };
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
+  list: {
+    width: drawerWidth,
+  },
   drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  }, 
-  drawerHeader: {
     display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    ...theme.mixins.toolbar,
-    justifyContent: 'flexEnd',
   },
-}));
+  chevron: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
+  type: {
+    paddingLeft: 20,
+  },
+  item: {
+    textAlign: 'right',
+    paddingRight: 30,
+  }
+});
 
-const LeftMenu = ({ open, setOpen}) => {
+const LeftMenu = ( {open, setOpen }) => {
 
   const classes = useStyles();
   const theme = useTheme();
@@ -64,7 +68,7 @@ const LeftMenu = ({ open, setOpen}) => {
         key={string}
         component={Link} 
         to={stringPaths[string]}>
-        <ListItemText>
+        <ListItemText className={classes.item} >
           {string}
         </ListItemText>
       </ListItem>
@@ -79,7 +83,7 @@ const LeftMenu = ({ open, setOpen}) => {
         key={chord} 
         component={Link} 
         to={chordPaths[chord]} >
-        <ListItemText >
+        <ListItemText className={classes.item}>
           {chord}
         </ListItemText>
       </ListItem>
@@ -87,33 +91,39 @@ const LeftMenu = ({ open, setOpen}) => {
   }
 
   return (
-    <Drawer 
-      className={classes.drawer}
-      variant='persistent'
-      anchor='left'
-      open={open}
-      classes={{paper: classes.drawerPaper}}
-    >
-      <div className={classes.drawerHeader}>
-        <IconButton onClick={handleClose}>
-          {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-        </IconButton>
-      </div>
-      <Divider />
-      <List>
-        <ListItemText >
-          Strings
-        </ListItemText>
-        {strings}
-      </List>
-      <Divider />
-      <List>
-        <ListItemText >
-          Chords
-        </ListItemText>
-        {chords}
-      </List>
-    </Drawer>
+    <div 
+      className={classes.list}
+      role='presentation'
+      onClick={handleClose}>
+      <Drawer 
+        className={classes.drawer}
+        variant='persistent'
+        anchor='left'
+        open={open}
+      >
+        <div className={classes.chevron}>
+          <IconButton onClick={handleClose}>
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
+        </div>
+        <Divider />
+        <List className={classes.list} >
+          <ListItemText className={classes.type} >
+            Strings
+          </ListItemText>
+          <Divider />
+          {strings}
+        </List>
+        <Divider />
+        <List className={classes.list} >
+          <ListItemText className={classes.type}>
+            Chords
+          </ListItemText>
+          <Divider />
+          {chords}
+        </List>
+      </Drawer>
+    </div>
   )
 };
 
