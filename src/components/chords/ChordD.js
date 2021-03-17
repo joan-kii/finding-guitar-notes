@@ -22,7 +22,7 @@ const ChordD = () => {
   const [showFailMessage, setShowFailMessage] = useState(false);
   const { exercises, setExercises, setActualExercise } = useContext(ExercisesContext);
   useEffect(() => {
-    setActualExercise(exercises.chordExercises[chord].title);
+    setActualExercise(exercises.chordExercises[chord]);
   });
 
   const handleClick = (event) => {

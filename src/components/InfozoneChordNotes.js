@@ -62,7 +62,7 @@ const InfozoneChordNotes = ({ notesChord, chord, rightNotes }) => {
       <Container className={classes.container}>
         <Paper className={classes.paper}>
           <Typography className={classes.title}>
-            {`Find the notes of Major ${actualExercise}`}
+            {actualExercise ? `Find the notes of Major ${actualExercise.title}` : ''}
           </Typography>
           <MuiThemeProvider theme={theme}>
             <Container className={classes.results}>

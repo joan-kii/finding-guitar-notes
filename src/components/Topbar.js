@@ -6,9 +6,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import RefreshIcon from '@material-ui/icons/Refresh';
 import { motion } from 'framer-motion';
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 0.7,
+    flexGrow: 1,
     color: theme.palette.common.white,
     textDecoration: 'none',
     cursor: 'pointer'
@@ -33,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     fontSize: '1.5em',
     cursor: 'context-menu',
+  }, 
+  resetButton: {
+    marginRight: '4em',
   }
 }));
 
@@ -41,7 +46,21 @@ const Topbar = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
-  const { actualExercise } = useContext(ExercisesContext);
+  const { actualExercise, exercises, setExercises } = useContext(ExercisesContext);
+
+  const resetExercise = () => {
+    for (let chord in actualExercise) {
+      if (chord === 'completed') {
+        actualExercise[chord] = false;
+      } else if (chord === 'title') {
+        return;
+      } else {
+        actualExercise[chord].completed = false;
+      }
+    }
+    setExercises(actualExercise);
+    console.log(exercises)
+  };
 
   const handleAuth = (event) => {
     setAnchorEl(event.currentTarget);
@@ -74,8 +93,15 @@ const Topbar = () => {
             </Typography>
           </Link>
           <Typography variant='h3' className={classes.exerciseName}>
-            {actualExercise}
+            {actualExercise ? actualExercise.title : ''}
           </Typography>
+          <Button 
+            className={classes.resetButton}
+            variant='contained'
+            startIcon={<RefreshIcon />}
+            onClick={resetExercise} >
+              Reset Exercise
+          </Button>
           <IconButton 
             edge='end'
             onClick={handleAuth}

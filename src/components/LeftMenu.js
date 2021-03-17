@@ -9,7 +9,6 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { SettingsInputComponent, SettingsPowerRounded } from '@material-ui/icons';
 
 const stringPaths = {
   'String 1': '/notes-string-1',

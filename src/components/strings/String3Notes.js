@@ -27,7 +27,7 @@ const String3Notes = () => {
 
 
   useEffect(() => {
-    setActualExercise(exercises.notesExercises.string_3.title);
+    setActualExercise(exercises.notesExercises.string_3);
   });
 
   const closeMessage = () => {
