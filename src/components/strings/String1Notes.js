@@ -42,11 +42,11 @@ const String1Notes = () => {
     if (rightNotes === 13) {
        setExercises((prevState) => {
         prevState.notesExercises.string_1.completed = true;
+        console.log(prevState.notesExercises.string_1.completed)
         return ({...prevState});
       })
     }
   }, [rightNotes, setExercises]);
-  
 
   const handleClose = (anchorEl, noteSelected) => {
     

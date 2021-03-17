@@ -45,11 +45,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
   chip: {
     margin: theme.spacing(1)
-  }
+  },
 }));
 
 const InfozoneStringNotes = ({ notesString, string }) => {

@@ -3,6 +3,17 @@ import React, { useState, createContext } from 'react';
 export const ExercisesContext = createContext();
 
 const ExercisesContextProvider = (props) => {
+
+  const resetExercise = (exerciseTitle) => {
+    if (exerciseTitle.title === 'String 1') {
+      setExercises((prevState) => {
+        prevState.notesExercises.string_1.completed = false;
+        return ({...prevState});
+      })
+    console.log(exercises.notesExercises.string_1.completed)
+    }
+  };
+
   const [actualExercise, setActualExercise] = useState(null);
   const [exercises, setExercises] = useState({
     general: {
@@ -124,7 +135,7 @@ const ExercisesContextProvider = (props) => {
   });
   return (
     <ExercisesContext.Provider 
-      value={{exercises, setExercises, actualExercise, setActualExercise}}>
+      value={{exercises, setExercises, actualExercise, setActualExercise, resetExercise}}>
       {props.children}
     </ExercisesContext.Provider>
   );
