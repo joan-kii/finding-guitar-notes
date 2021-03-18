@@ -109,9 +109,10 @@ const useStyles = makeStyles((theme) => ({
 
 const SelectGame = () => {
 
-  const { setActualExercise } = useContext(ExercisesContext);
+  const { setActualExercise, setChoiceMenu } = useContext(ExercisesContext);
   useEffect(() => {
     setActualExercise('');
+    setChoiceMenu('');
   });
 
   const classes = useStyles();

@@ -43,10 +43,11 @@ const useStyles = makeStyles((theme) => ({
 const Notes = () => {
 
   const classes = useStyles();
-  const { setActualExercise } = useContext(ExercisesContext);
+  const { setActualExercise, setChoiceMenu } = useContext(ExercisesContext);
 
   useEffect(() => {
     setActualExercise('');
+    setChoiceMenu('Learn the notes!');
   });
 
   return (
@@ -54,7 +55,7 @@ const Notes = () => {
       <div className={classes.text}>
         <Container >
           <Typography component='h3' variant='h4' align='center' gutterBottom>
-            Learn the notes!
+            Pick a string
           </Typography>
         </Container>
       </div>

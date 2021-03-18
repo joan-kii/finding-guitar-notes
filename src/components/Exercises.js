@@ -4,21 +4,25 @@ export const ExercisesContext = createContext();
 
 const ExercisesContextProvider = (props) => {
 
-  const resetExercise = (exerciseTitle) => {
-    if (exerciseTitle.title === 'String 1') {
+  const resetExercise = (exercise) => {
+    if (exercise.title === 'String 1') {
       setExercises((prevState) => {
+        for (let note in prevState.notesExercises.string_1) {
+          if (note !== 'completed' && note !== 'title') {
+            prevState.notesExercises.string_1[note].completed = false;
+          }
+        }
         prevState.notesExercises.string_1.completed = false;
         return ({...prevState});
       })
-    console.log(exercises.notesExercises.string_1.completed)
     }
+    window.location.reload();
   };
 
-  const [actualExercise, setActualExercise] = useState(null);
+  const [actualExercise, setActualExercise] = useState('');
+  const [choiceMenu, setChoiceMenu] = useState('');
+  const [userSigned, setUserSigned] = useState(false);
   const [exercises, setExercises] = useState({
-    general: {
-      userSigned: false,
-    },
     notesExercises: {
       string_1: {
         'E': {completed: false},
@@ -135,7 +139,7 @@ const ExercisesContextProvider = (props) => {
   });
   return (
     <ExercisesContext.Provider 
-      value={{exercises, setExercises, actualExercise, setActualExercise, resetExercise}}>
+      value={{exercises, setExercises, actualExercise, setActualExercise, resetExercise, choiceMenu, setChoiceMenu}}>
       {props.children}
     </ExercisesContext.Provider>
   );

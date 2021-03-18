@@ -46,7 +46,7 @@ const Topbar = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
-  const { actualExercise, resetExercise } = useContext(ExercisesContext);
+  const { actualExercise, choiceMenu, resetExercise } = useContext(ExercisesContext);
 
   const handleAuth = (event) => {
     setAnchorEl(event.currentTarget);
@@ -79,7 +79,7 @@ const Topbar = () => {
             </Typography>
           </Link>
           <Typography variant='h3' className={classes.exerciseName}>
-            {actualExercise ? actualExercise.title : ''}
+            {actualExercise || choiceMenu}
           </Typography>
           { actualExercise ? 
               <Button 
