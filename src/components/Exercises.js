@@ -14,12 +14,59 @@ const ExercisesContextProvider = (props) => {
           return ({...prevState});
         }) 
       }
+    } else if (exercise.title === 'String 2') {
+      for (let note in exercise) {
+        if (note !== 'completed' && note !== 'title')
+        setString2Exercise((prevState) => {
+          prevState[note].completed = false;
+          prevState.completed = false;
+          return ({...prevState});
+        }) 
+      }
+    } else if (exercise.title === 'String 3') {
+      for (let note in exercise) {
+        if (note !== 'completed' && note !== 'title')
+        setString3Exercise((prevState) => {
+          prevState[note].completed = false;
+          prevState.completed = false;
+          return ({...prevState});
+        }) 
+      }
+    } else if (exercise.title === 'String 4'){
+      for (let note in exercise) {
+        if (note !== 'completed' && note !== 'title')
+        setString4Exercise((prevState) => {
+          prevState[note].completed = false;
+          prevState.completed = false;
+          return ({...prevState});
+        }) 
+      }
+    } else if (exercise.title === 'String 5'){
+      for (let note in exercise) {
+        if (note !== 'completed' && note !== 'title')
+        setString5Exercise((prevState) => {
+          prevState[note].completed = false;
+          prevState.completed = false;
+          return ({...prevState});
+        }) 
+      } 
+    } else if (exercise.title === 'String 6'){
+      for (let note in exercise) {
+        if (note !== 'completed' && note !== 'title')
+        setString6Exercise((prevState) => {
+          prevState[note].completed = false;
+          prevState.completed = false;
+          return ({...prevState});
+        }) 
+      }
     }
+    window.location.reload();
   };
 
   const [actualExercise, setActualExercise] = useState('');
   const [choiceMenu, setChoiceMenu] = useState('');
   const [userSigned, setUserSigned] = useState(false);
+
   const [string1Exercise, setString1Exercise] = useState({
     'E': {completed: false},
     'F': {completed: false},
@@ -36,112 +83,94 @@ const ExercisesContextProvider = (props) => {
     'e': {completed: false},
     completed: false,
     title: 'String 1',
-  })
+  });
+  const [string2Exercise, setString2Exercise] = useState({
+    'B': {completed: false},
+    'C': {completed: false},
+    'C#/Db': {completed: false},
+    'D': {completed: false},
+    'D#/Eb': {completed: false},
+    'E': {completed: false},
+    'F': {completed: false},
+    'F#/Gb': {completed: false},
+    'G': {completed: false},
+    'G#/Ab': {completed: false},
+    'A': {completed: false},
+    'A#/Bb': {completed: false},
+    'b': {completed: false},
+    completed: false,
+    title: 'String 2'
+  });
+  const [string3Exercise, setString3Exercise] = useState({
+    'G': {completed: false},
+    'G#/Ab': {completed: false},
+    'A': {completed: false},
+    'A#/Bb': {completed: false},
+    'B': {completed: false},
+    'C': {completed: false},
+    'C#/Db': {completed: false},
+    'D': {completed: false},
+    'D#/Eb': {completed: false},
+    'E': {completed: false},
+    'F': {completed: false},
+    'F#/Gb': {completed: false},
+    'g': {completed: false},
+    completed: false,
+    title: 'String 3'
+  });
+  const [string4Exercise, setString4Exercise] = useState({
+    'D': {completed: false},
+    'D#/Eb': {completed: false},
+    'E': {completed: false},
+    'F': {completed: false},
+    'F#/Gb': {completed: false},
+    'G': {completed: false},
+    'G#/Ab': {completed: false},
+    'A': {completed: false},
+    'A#/Bb': {completed: false},
+    'B': {completed: false},
+    'C': {completed: false},
+    'C#/Db': {completed: false},
+    'd': {completed: false},
+    completed: false,
+    title: 'String 4'
+  });
+  const [string5Exercise, setString5Exercise] = useState({
+    'A': {completed: false},
+    'A#/Bb': {completed: false},
+    'B': {completed: false},
+    'C': {completed: false},
+    'C#/Db': {completed: false},
+    'D': {completed: false},
+    'D#/Eb': {completed: false},
+    'E': {completed: false},
+    'F': {completed: false},
+    'F#/Gb': {completed: false},
+    'G': {completed: false},
+    'G#/Ab': {completed: false},
+    'a': {completed: false},
+    completed: false,
+    title: 'String 5'
+  });
+  const [string6Exercise, setString6Exercise] = useState({
+    'E': {completed: false},
+    'F': {completed: false},
+    'F#/Gb': {completed: false},
+    'G': {completed: false},
+    'G#/Ab': {completed: false},
+    'A': {completed: false},
+    'A#/Bb': {completed: false},
+    'B': {completed: false},
+    'C': {completed: false},
+    'C#/Db': {completed: false},
+    'D': {completed: false},
+    'D#/Eb': {completed: false},
+    'e': {completed: false},
+    completed: false,
+    title: 'String 6'
+  });
+
   const [exercises, setExercises] = useState({
-    notesExercises: {
-      /* string_1: {
-        'E': {completed: false},
-        'F': {completed: false},
-        'F#/Gb': {completed: false},
-        'G': {completed: false},
-        'G#/Ab': {completed: false},
-        'A': {completed: false},
-        'A#/Bb': {completed: false},
-        'B': {completed: false},
-        'C': {completed: false},
-        'C#/Db': {completed: false},
-        'D': {completed: false},
-        'D#/Eb': {completed: false},
-        'e': {completed: false},
-        completed: false,
-        title: 'String 1',
-      }, */
-      string_2: {
-        'B': {completed: false},
-        'C': {completed: false},
-        'C#/Db': {completed: false},
-        'D': {completed: false},
-        'D#/Eb': {completed: false},
-        'E': {completed: false},
-        'F': {completed: false},
-        'F#/Gb': {completed: false},
-        'G': {completed: false},
-        'G#/Ab': {completed: false},
-        'A': {completed: false},
-        'A#/Bb': {completed: false},
-        'b': {completed: false},
-        completed: false,
-        title: 'String 2',
-      },
-      string_3: {
-        'G': {completed: false},
-        'G#/Ab': {completed: false},
-        'A': {completed: false},
-        'A#/Bb': {completed: false},
-        'B': {completed: false},
-        'C': {completed: false},
-        'C#/Db': {completed: false},
-        'D': {completed: false},
-        'D#/Eb': {completed: false},
-        'E': {completed: false},
-        'F': {completed: false},
-        'F#/Gb': {completed: false},
-        'g': {completed: false},
-        completed: false,
-        title: 'String 3',
-      },
-      string_4: {
-        'D': {completed: false},
-        'D#/Eb': {completed: false},
-        'E': {completed: false},
-        'F': {completed: false},
-        'F#/Gb': {completed: false},
-        'G': {completed: false},
-        'G#/Ab': {completed: false},
-        'A': {completed: false},
-        'A#/Bb': {completed: false},
-        'B': {completed: false},
-        'C': {completed: false},
-        'C#/Db': {completed: false},
-        'd': {completed: false},
-        completed: false,
-        title: 'String 4',
-      },
-      string_5: {
-        'A': {completed: false},
-        'A#/Bb': {completed: false},
-        'B': {completed: false},
-        'C': {completed: false},
-        'C#/Db': {completed: false},
-        'D': {completed: false},
-        'D#/Eb': {completed: false},
-        'E': {completed: false},
-        'F': {completed: false},
-        'F#/Gb': {completed: false},
-        'G': {completed: false},
-        'G#/Ab': {completed: false},
-        'a': {completed: false},
-        completed: false,
-        title: 'String 5',
-      },
-      string_6: {
-        'E': {completed: false},
-        'F': {completed: false},
-        'F#/Gb': {completed: false},
-        'G': {completed: false},
-        'G#/Ab': {completed: false},
-        'A': {completed: false},
-        'A#/Bb': {completed: false},
-        'B': {completed: false},
-        'C': {completed: false},
-        'C#/Db': {completed: false},
-        'D': {completed: false},
-        'D#/Eb': {completed: false},
-        'e': {completed: false},
-        completed: false,
-        title: 'String 6',
-      },
-    }, 
     chordExercises: {
       'A': {title: 'Chord A', completed: false},
       'B': {title: 'Chord B', completed: false},
@@ -154,7 +183,15 @@ const ExercisesContextProvider = (props) => {
   });
   return (
     <ExercisesContext.Provider 
-      value={{exercises, setExercises, actualExercise, setActualExercise, resetExercise, choiceMenu, setChoiceMenu, string1Exercise, setString1Exercise}}>
+      value={{exercises, setExercises, 
+        actualExercise, setActualExercise, 
+        resetExercise, choiceMenu, setChoiceMenu, 
+        string1Exercise, setString1Exercise,
+        string2Exercise, setString2Exercise,
+        string3Exercise, setString3Exercise,
+        string4Exercise, setString4Exercise,
+        string5Exercise, setString5Exercise,
+        string6Exercise, setString6Exercise}}>
       {props.children}
     </ExercisesContext.Provider>
   );

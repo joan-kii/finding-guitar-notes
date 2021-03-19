@@ -17,8 +17,8 @@ const Alert = (props) => {
 
 const String1Notes = () => {
 
-  const notesString1 = ['E', 'F', 'F#/Gb', 'G', 'G#/Ab', 'A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'e'];
   const { string1Exercise, setString1Exercise, setActualExercise } = useContext(ExercisesContext);
+  const notesString1 = Object.keys(string1Exercise);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -40,7 +40,7 @@ const String1Notes = () => {
 
   useEffect(() => {
     if (rightNotes === 13) {
-       setString1Exercise((prevState) => {
+      setString1Exercise((prevState) => {
         prevState.completed = true;
         return ({...prevState});
       })
@@ -48,7 +48,6 @@ const String1Notes = () => {
   }, [rightNotes, setString1Exercise]);
 
   const handleClose = (anchorEl, noteSelected) => {
-    
     const note = anchorEl.id;
     if (noteSelected !== 'backdropClick' && note === noteSelected) {
       anchorEl.classList.remove('clickable');
@@ -85,7 +84,7 @@ const String1Notes = () => {
     }
   };
 
-  // Create the exercise fretboard
+  // Create the exercise fretboard string 1
   
   for (let fret of string1) {
     const newFret = React.cloneElement(fret, 
@@ -102,6 +101,7 @@ const String1Notes = () => {
       string1.splice(string1.indexOf(fret), 1, newFret);
     }
   }
+  
 
   return (
     <div>
