@@ -6,25 +6,40 @@ const ExercisesContextProvider = (props) => {
 
   const resetExercise = (exercise) => {
     if (exercise.title === 'String 1') {
-      setExercises((prevState) => {
-        for (let note in prevState.notesExercises.string_1) {
-          if (note !== 'completed' && note !== 'title') {
-            prevState.notesExercises.string_1[note].completed = false;
-          }
-        }
-        prevState.notesExercises.string_1.completed = false;
-        return ({...prevState});
-      })
+      for (let note in exercise) {
+        if (note !== 'completed' && note !== 'title')
+        setString1Exercise((prevState) => {
+          prevState[note].completed = false;
+          prevState.completed = false;
+          return ({...prevState});
+        }) 
+      }
     }
-    window.location.reload();
   };
 
   const [actualExercise, setActualExercise] = useState('');
   const [choiceMenu, setChoiceMenu] = useState('');
   const [userSigned, setUserSigned] = useState(false);
+  const [string1Exercise, setString1Exercise] = useState({
+    'E': {completed: false},
+    'F': {completed: false},
+    'F#/Gb': {completed: false},
+    'G': {completed: false},
+    'G#/Ab': {completed: false},
+    'A': {completed: false},
+    'A#/Bb': {completed: false},
+    'B': {completed: false},
+    'C': {completed: false},
+    'C#/Db': {completed: false},
+    'D': {completed: false},
+    'D#/Eb': {completed: false},
+    'e': {completed: false},
+    completed: false,
+    title: 'String 1',
+  })
   const [exercises, setExercises] = useState({
     notesExercises: {
-      string_1: {
+      /* string_1: {
         'E': {completed: false},
         'F': {completed: false},
         'F#/Gb': {completed: false},
@@ -40,7 +55,7 @@ const ExercisesContextProvider = (props) => {
         'e': {completed: false},
         completed: false,
         title: 'String 1',
-      },
+      }, */
       string_2: {
         'B': {completed: false},
         'C': {completed: false},
@@ -139,7 +154,7 @@ const ExercisesContextProvider = (props) => {
   });
   return (
     <ExercisesContext.Provider 
-      value={{exercises, setExercises, actualExercise, setActualExercise, resetExercise, choiceMenu, setChoiceMenu}}>
+      value={{exercises, setExercises, actualExercise, setActualExercise, resetExercise, choiceMenu, setChoiceMenu, string1Exercise, setString1Exercise}}>
       {props.children}
     </ExercisesContext.Provider>
   );

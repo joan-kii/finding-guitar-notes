@@ -18,7 +18,7 @@ const Alert = (props) => {
 const String1Notes = () => {
 
   const notesString1 = ['E', 'F', 'F#/Gb', 'G', 'G#/Ab', 'A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'e'];
-  const { exercises, setExercises, setActualExercise } = useContext(ExercisesContext);
+  const { string1Exercise, setString1Exercise, setActualExercise } = useContext(ExercisesContext);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -26,7 +26,7 @@ const String1Notes = () => {
   const [rightNotes, setRightNotes] = useState(0);
 
   useEffect(() => {
-    setActualExercise(exercises.notesExercises.string_1);
+    setActualExercise(string1Exercise);
   });
 
   const closeMessage = () => {
@@ -40,12 +40,12 @@ const String1Notes = () => {
 
   useEffect(() => {
     if (rightNotes === 13) {
-       setExercises((prevState) => {
-        prevState.notesExercises.string_1.completed = true;
+       setString1Exercise((prevState) => {
+        prevState.completed = true;
         return ({...prevState});
       })
     }
-  }, [rightNotes, setExercises]);
+  }, [rightNotes, setString1Exercise]);
 
   const handleClose = (anchorEl, noteSelected) => {
     
@@ -54,8 +54,8 @@ const String1Notes = () => {
       anchorEl.classList.remove('clickable');
       anchorEl.classList.add('correct');
       anchorEl.setAttribute('data-before', note);
-      setExercises((prevState) => {
-        prevState.notesExercises.string_1[noteSelected].completed = true;
+      setString1Exercise((prevState) => {
+        prevState[noteSelected].completed = true;
         return ({...prevState});
       });
       setRightNotes(rightNotes + 1);
@@ -86,7 +86,7 @@ const String1Notes = () => {
   };
 
   // Create the exercise fretboard
-
+  
   for (let fret of string1) {
     const newFret = React.cloneElement(fret, 
       {id: notesString1[string1.indexOf(fret)], className: `${[fret.props.className]} clickable`, 
@@ -131,7 +131,7 @@ const String1Notes = () => {
       </div>
       <InfozoneStringNotes 
         notesString={notesString1}
-        string= 'string_1' />
+        string={string1Exercise} />
     </div>
   );
 }; 

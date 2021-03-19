@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
 const InfozoneStringNotes = ({ notesString, string }) => {
   
-  const { exercises, actualExercise } = useContext(ExercisesContext);
+  const { actualExercise } = useContext(ExercisesContext);
   const classes = useStyles();
 
   return (
@@ -70,88 +70,88 @@ const InfozoneStringNotes = ({ notesString, string }) => {
                 className={classes.chip} 
                 size='medium' 
                 label='Open' 
-                color={exercises.notesExercises[string][notesString[0]].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string][notesString[0]].completed ? <DoneIcon /> : null} />
+                color={string[notesString[0]].completed ? 'primary' : 'default'}
+                icon={string[notesString[0]].completed ? <DoneIcon /> : null} />
               <Chip 
                 className={classes.chip} 
                 size='medium' 
                 label='Fret 1' 
-                color={exercises.notesExercises[string][notesString[1]].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string][notesString[1]].completed ? <DoneIcon /> : null} />
+                color={string[notesString[1]].completed ? 'primary' : 'default'}
+                icon={string[notesString[1]].completed ? <DoneIcon /> : null} />
               <Chip 
                 className={classes.chip} 
                 size='medium' 
                 label='Fret 2' 
-                color={exercises.notesExercises[string][notesString[2]].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string][notesString[2]].completed ? <DoneIcon /> : null} />
+                color={string[notesString[2]].completed ? 'primary' : 'default'}
+                icon={string[notesString[2]].completed ? <DoneIcon /> : null} />
               <Chip 
                 className={classes.chip} 
                 size='medium' 
                 label='Fret 3' 
-                color={exercises.notesExercises[string][notesString[3]].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string][notesString[3]].completed ? <DoneIcon /> : null} />
+                color={string[notesString[3]].completed ? 'primary' : 'default'}
+                icon={string[notesString[3]].completed ? <DoneIcon /> : null} />
               <Chip 
                 className={classes.chip} 
                 size='medium' 
                 label='Fret 4' 
-                color={exercises.notesExercises[string][notesString[4]].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string][notesString[4]].completed ? <DoneIcon /> : null} />
+                color={string[notesString[4]].completed ? 'primary' : 'default'}
+                icon={string[notesString[4]].completed ? <DoneIcon /> : null} />
               <Chip 
                 className={classes.chip} 
                 size='medium' 
                 label='Fret 5' 
-                color={exercises.notesExercises[string][notesString[5]].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string][notesString[5]].completed ? <DoneIcon /> : null} />
+                color={string[notesString[5]].completed ? 'primary' : 'default'}
+                icon={string[notesString[5]].completed ? <DoneIcon /> : null} />
               <Chip 
                 className={classes.chip} 
                 size='medium' 
                 label='Fret 6' 
-                color={exercises.notesExercises[string][notesString[6]].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string][notesString[6]].completed ? <DoneIcon /> : null} />
+                color={string[notesString[6]].completed ? 'primary' : 'default'}
+                icon={string[notesString[6]].completed ? <DoneIcon /> : null} />
               <Chip 
                 className={classes.chip} 
                 size='medium' 
                 label='Fret 7' 
-                color={exercises.notesExercises[string][notesString[7]].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string][notesString[7]].completed ? <DoneIcon /> : null} />
+                color={string[notesString[7]].completed ? 'primary' : 'default'}
+                icon={string[notesString[7]].completed ? <DoneIcon /> : null} />
               <Chip 
                 className={classes.chip} 
                 size='medium' 
                 label='Fret 8' 
-                color={exercises.notesExercises[string][notesString[8]].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string][notesString[8]].completed ? <DoneIcon /> : null} />
+                color={string[notesString[8]].completed ? 'primary' : 'default'}
+                icon={string[notesString[8]].completed ? <DoneIcon /> : null} />
               <Chip 
                 className={classes.chip} 
                 size='medium' 
                 label='Fret 9' 
-                color={exercises.notesExercises[string][notesString[9]].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string][notesString[9]].completed ? <DoneIcon /> : null} />
+                color={string[notesString[9]].completed ? 'primary' : 'default'}
+                icon={string[notesString[9]].completed ? <DoneIcon /> : null} />
               <Chip 
                 className={classes.chip} 
                 size='medium' 
                 label='Fret 10' 
-                color={exercises.notesExercises[string][notesString[10]].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string][notesString[10]].completed ? <DoneIcon /> : null} />
+                color={string[notesString[10]].completed ? 'primary' : 'default'}
+                icon={string[notesString[10]].completed ? <DoneIcon /> : null} />
               <Chip 
                 className={classes.chip} 
                 size='medium' 
                 label='Fret 11' 
-                color={exercises.notesExercises[string][notesString[11]].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string][notesString[11]].completed ? <DoneIcon /> : null} />
+                color={string[notesString[11]].completed ? 'primary' : 'default'}
+                icon={string[notesString[11]].completed ? <DoneIcon /> : null} />
               <Chip 
                 className={classes.chip} 
                 size='medium' 
                 label='Fret 12' 
-                color={exercises.notesExercises[string][notesString[12]].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string][notesString[12]].completed ? <DoneIcon /> : null} />
+                color={string[notesString[12]].completed ? 'primary' : 'default'}
+                icon={string[notesString[12]].completed ? <DoneIcon /> : null} />
             </Container>
             <Container className={classes.infoString} >
               <Chip 
                 className={classes.chip} 
                 size='medium' 
-                label={`${exercises.notesExercises[string].title}`} 
-                color={exercises.notesExercises[string].completed ? 'primary' : 'default'}
-                icon={exercises.notesExercises[string].completed  ? <DoneIcon /> : null} />
+                label={`${string.title}`} 
+                color={string.completed ? 'primary' : 'default'}
+                icon={string.completed  ? <DoneIcon /> : null} />
             </Container>
           </MuiThemeProvider>
         </Paper>
@@ -161,3 +161,4 @@ const InfozoneStringNotes = ({ notesString, string }) => {
 }; 
 
 export default InfozoneStringNotes;
+

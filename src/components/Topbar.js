@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 1,
+    flexGrow: 0.7,
     color: theme.palette.common.white,
     textDecoration: 'none',
     cursor: 'pointer'
@@ -79,7 +79,7 @@ const Topbar = () => {
             </Typography>
           </Link>
           <Typography variant='h3' className={classes.exerciseName}>
-            {actualExercise || choiceMenu}
+            {actualExercise.title || choiceMenu}
           </Typography>
           { actualExercise ? 
               <Button 
