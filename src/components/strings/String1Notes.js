@@ -1,15 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { ExercisesContext } from '../Exercises';
 import InfozoneStringNotes from '../InfozoneStringNotes';
+import Fretboard from '../Fretboard';
 import { createFretboard } from '../../modules/createFretboard';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-
-const isClickable = false;
-const fretboard = createFretboard(isClickable);
-const string1 = fretboard[0].props.children;
 
 const Alert = (props) => {
   return <MuiAlert elevation={6} variant='filled' {...props} />
@@ -85,28 +82,35 @@ const String1Notes = () => {
   };
 
   // Create the exercise fretboard string 1
+
+  const isClickable = false;
+  const fretboard = createFretboard(isClickable);
+  const string1 = fretboard[0].props.children;
   
-  for (let fret of string1) {
-    const newFret = React.cloneElement(fret, 
-      {id: notesString1[string1.indexOf(fret)], className: `${[fret.props.className]} clickable`, 
-      onClick: handleClick, 
-      'aria-controls': 'simple-menu', 
-      'aria-haspopup': 'true'}, null);
-    if (fret.key === '13') {
-      const newLastFret = React.createElement('div', {id: notesString1[string1.indexOf(fret)], 
-        key: fret.key, className: 'note-fret clickable', onClick: handleClick}, 
-        React.createElement('div', {key: fret.key, className: 'double-fretmark'}, ''));
-      string1.splice(string1.indexOf(fret), 1, newLastFret); 
-    } else {
-      string1.splice(string1.indexOf(fret), 1, newFret);
+  const string1Fretboard = () => {
+    for (let fret of string1) {
+      const newFret = React.cloneElement(fret, 
+        {id: notesString1[string1.indexOf(fret)], className: `${[fret.props.className]} clickable`, 
+        onClick: handleClick, 
+        'aria-controls': 'simple-menu', 
+        'aria-haspopup': 'true'}, null);
+      if (fret.key === '13') {
+        const newLastFret = React.createElement('div', {id: notesString1[string1.indexOf(fret)], 
+          key: fret.key, className: 'note-fret clickable', onClick: handleClick}, 
+          React.createElement('div', {key: fret.key, className: 'double-fretmark'}, ''));
+        string1.splice(string1.indexOf(fret), 1, newLastFret); 
+      } else {
+        string1.splice(string1.indexOf(fret), 1, newFret);
+      }
     }
-  }
+    return fretboard;
+  };
   
 
   return (
     <div>
-      <div className='fretboard'>
-        {fretboard}
+      <div>
+        <Fretboard fretboard={string1Fretboard} />
         <Menu 
           id='simple-menu'
           anchorEl={anchorEl}

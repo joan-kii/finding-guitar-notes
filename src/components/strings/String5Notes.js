@@ -1,15 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { ExercisesContext } from '../Exercises';
 import InfozoneStringNotes from '../InfozoneStringNotes';
+import Fretboard from '../Fretboard';
 import { createFretboard } from '../../modules/createFretboard';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-
-const isClickable = false;
-const fretboard = createFretboard(isClickable);
-const string5 = fretboard[4].props.children;
 
 const Alert = (props) => {
   return <MuiAlert elevation={6} variant='filled' {...props} />
@@ -88,19 +85,26 @@ const String5Notes = () => {
 
   // Create the exercise fretboard
 
-  for (let fret of string5) {
-    const newFret = React.cloneElement(fret, 
-      {id: notesString5[string5.indexOf(fret)], className: `${[fret.props.className]} clickable`, 
-      onClick: handleClick, 
-      'aria-controls': 'simple-menu', 
-      'aria-haspopup': 'true'}, null);
+  const isClickable = false;
+  const fretboard = createFretboard(isClickable);
+  const string5 = fretboard[4].props.children;
+
+  const string5Fretboard = () => {
+    for (let fret of string5) {
+      const newFret = React.cloneElement(fret, 
+        {id: notesString5[string5.indexOf(fret)], className: `${[fret.props.className]} clickable`, 
+        onClick: handleClick, 
+        'aria-controls': 'simple-menu', 
+        'aria-haspopup': 'true'}, null);
       string5.splice(string5.indexOf(fret), 1, newFret);
-  }
+    }
+    return fretboard;
+  };
 
   return (
     <div>
       <div className='fretboard'>
-        {fretboard}
+        <Fretboard fretboard={string5Fretboard} />
         <Menu 
           id='simple-menu'
           anchorEl={anchorEl}

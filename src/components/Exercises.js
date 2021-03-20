@@ -4,9 +4,9 @@ export const ExercisesContext = createContext();
 
 const ExercisesContextProvider = (props) => {
 
-  const [reset, setReset] = useState(false);
+  const [reset, setReset] = useState(true);
   const resetExercise = (exercise) => {
-    setReset(!reset);
+    setReset(false);
     for (let note in exercise) {
       if (note !== 'completed' && note !== 'title' && exercise.title === 'String 1') {
         setString1Exercise((prevState) => {
@@ -46,7 +46,6 @@ const ExercisesContextProvider = (props) => {
         })
       }
     }
-   /*  window.location.reload(); */
   };
 
   const [actualExercise, setActualExercise] = useState('');
@@ -178,7 +177,7 @@ const ExercisesContextProvider = (props) => {
         string4Exercise, setString4Exercise,
         string5Exercise, setString5Exercise,
         string6Exercise, setString6Exercise,
-        reset}}>
+        reset, setReset}}>
       {props.children}
     </ExercisesContext.Provider>
   );

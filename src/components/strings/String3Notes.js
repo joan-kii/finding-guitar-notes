@@ -46,7 +46,6 @@ const String3Notes = () => {
   }, [rightNotes, setString3Exercise]);
 
   const handleClose = (anchorEl, noteSelected) => {
-    
     const note = anchorEl.id;
     if (noteSelected !== 'backdropClick' && note === noteSelected) {
       anchorEl.classList.remove('clickable');
@@ -92,11 +91,12 @@ const String3Notes = () => {
   const string3Fretboard = () => {
     for (let fret of string3) {
       const newFret = React.cloneElement(fret, 
-        {id: notesString3[string3.indexOf(fret)], className: `${[fret.props.className]} clickable`, 
-        onClick: handleClick, 
-        'aria-controls': 'simple-menu', 
-        'aria-haspopup': 'true'}, null);
-        string3.splice(string3.indexOf(fret), 1, newFret);
+        {id: notesString3[string3.indexOf(fret)], 
+          className: `${[fret.props.className]} ${fret.props.className.includes('clickable') ? '' : 'clickable'}`, 
+          onClick: handleClick, 
+          'aria-controls': 'simple-menu', 
+          'aria-haspopup': 'true'}, null);
+      string3.splice(string3.indexOf(fret), 1, newFret);        
     }
     return fretboard;
   };
