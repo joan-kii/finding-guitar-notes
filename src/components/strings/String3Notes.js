@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { ExercisesContext } from '../Exercises';
+import Fretboard from '../Fretboard';
 import InfozoneStringNotes from '../InfozoneStringNotes';
 import { createFretboard } from '../../modules/createFretboard';
 import Menu from '@material-ui/core/Menu';
@@ -7,18 +8,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 
-const isClickable = false;
-const fretboard = createFretboard(isClickable);
-const string3 = fretboard[2].props.children;
-
 const Alert = (props) => {
   return <MuiAlert elevation={6} variant='filled' {...props} />
 };
 
 const String3Notes = () => {
 
-  const notesString3 = ['G', 'G#/Ab', 'A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'g'];
-  const { exercises, setExercises, setActualExercise } = useContext(ExercisesContext);
+  const { string3Exercise, setString3Exercise, setActualExercise } = useContext(ExercisesContext);
+  const notesString3 = Object.keys(string3Exercise);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -27,7 +24,7 @@ const String3Notes = () => {
 
 
   useEffect(() => {
-    setActualExercise(exercises.notesExercises.string_3);
+    setActualExercise(string3Exercise);
   });
 
   const closeMessage = () => {
@@ -41,12 +38,12 @@ const String3Notes = () => {
 
   useEffect(() => {
     if (rightNotes === 13) {
-       setExercises((prevState) => {
-        prevState.notesExercises.string_3.completed = true;
+      setString3Exercise((prevState) => {
+        prevState.completed = true;
         return ({...prevState});
       })
     }
-  }, [rightNotes, setExercises]);
+  }, [rightNotes, setString3Exercise]);
 
   const handleClose = (anchorEl, noteSelected) => {
     
@@ -55,8 +52,8 @@ const String3Notes = () => {
       anchorEl.classList.remove('clickable');
       anchorEl.classList.add('correct');
       anchorEl.setAttribute('data-before', note);
-      setExercises((prevState) => {
-        prevState.notesExercises.string_3[noteSelected].completed = true;
+      setString3Exercise((prevState) => {
+        prevState[noteSelected].completed = true;
         return ({...prevState});
       });
       setRightNotes(rightNotes + 1);
@@ -88,19 +85,26 @@ const String3Notes = () => {
 
   // Create the exercise fretboard
 
-  for (let fret of string3) {
-    const newFret = React.cloneElement(fret, 
-      {id: notesString3[string3.indexOf(fret)], className: `${[fret.props.className]} clickable`, 
-      onClick: handleClick, 
-      'aria-controls': 'simple-menu', 
-      'aria-haspopup': 'true'}, null);
-      string3.splice(string3.indexOf(fret), 1, newFret);
-  }
+  const isClickable = false;
+  const fretboard = createFretboard(isClickable);
+  const string3 = fretboard[2].props.children;
+
+  const string3Fretboard = () => {
+    for (let fret of string3) {
+      const newFret = React.cloneElement(fret, 
+        {id: notesString3[string3.indexOf(fret)], className: `${[fret.props.className]} clickable`, 
+        onClick: handleClick, 
+        'aria-controls': 'simple-menu', 
+        'aria-haspopup': 'true'}, null);
+        string3.splice(string3.indexOf(fret), 1, newFret);
+    }
+    return fretboard;
+  };
 
   return (
     <div>
-      <div className='fretboard'>
-        {fretboard}
+      <div>
+        <Fretboard fretboard={string3Fretboard} />
         <Menu 
           id='simple-menu'
           anchorEl={anchorEl}
@@ -117,7 +121,7 @@ const String3Notes = () => {
           ))}
         </Menu>
         <Snackbar open={showSuccessMessage} autoHideDuration={2000} onClose={closeMessage}>
-          <Alert severity='success'>That's rigth!</Alert>
+          <Alert severity='success'>That's right!</Alert>
         </Snackbar>
         <Snackbar open={showFailMessage} autoHideDuration={2000} onClose={closeMessage}>
           <Alert severity='error'>Try again</Alert>
@@ -125,8 +129,7 @@ const String3Notes = () => {
       </div>
       <InfozoneStringNotes 
         notesString={notesString3}
-        string= 'string_3'
-        rightNotes={rightNotes} />
+        string={string3Exercise} />
     </div>
   );
 }; 

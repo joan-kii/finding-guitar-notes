@@ -4,63 +4,49 @@ export const ExercisesContext = createContext();
 
 const ExercisesContextProvider = (props) => {
 
+  const [reset, setReset] = useState(false);
   const resetExercise = (exercise) => {
-    if (exercise.title === 'String 1') {
-      for (let note in exercise) {
-        if (note !== 'completed' && note !== 'title')
+    setReset(!reset);
+    for (let note in exercise) {
+      if (note !== 'completed' && note !== 'title' && exercise.title === 'String 1') {
         setString1Exercise((prevState) => {
           prevState[note].completed = false;
           prevState.completed = false;
           return ({...prevState});
         }) 
-      }
-    } else if (exercise.title === 'String 2') {
-      for (let note in exercise) {
-        if (note !== 'completed' && note !== 'title')
+      } else if (note !== 'completed' && note !== 'title' && exercise.title === 'String 2') {
         setString2Exercise((prevState) => {
           prevState[note].completed = false;
           prevState.completed = false;
           return ({...prevState});
-        }) 
-      }
-    } else if (exercise.title === 'String 3') {
-      for (let note in exercise) {
-        if (note !== 'completed' && note !== 'title')
+        })
+      } else if (note !== 'completed' && note !== 'title' && exercise.title === 'String 3') {
         setString3Exercise((prevState) => {
           prevState[note].completed = false;
           prevState.completed = false;
           return ({...prevState});
-        }) 
-      }
-    } else if (exercise.title === 'String 4'){
-      for (let note in exercise) {
-        if (note !== 'completed' && note !== 'title')
+        })
+      } else if (note !== 'completed' && note !== 'title' && exercise.title === 'String 4') {
         setString4Exercise((prevState) => {
           prevState[note].completed = false;
           prevState.completed = false;
           return ({...prevState});
-        }) 
-      }
-    } else if (exercise.title === 'String 5'){
-      for (let note in exercise) {
-        if (note !== 'completed' && note !== 'title')
+        })
+      } else if (note !== 'completed' && note !== 'title' && exercise.title === 'String 5') {
         setString5Exercise((prevState) => {
           prevState[note].completed = false;
           prevState.completed = false;
           return ({...prevState});
-        }) 
-      } 
-    } else if (exercise.title === 'String 6'){
-      for (let note in exercise) {
-        if (note !== 'completed' && note !== 'title')
+        })
+      } else if (note !== 'completed' && note !== 'title' && exercise.title === 'String 6') {
         setString6Exercise((prevState) => {
           prevState[note].completed = false;
           prevState.completed = false;
           return ({...prevState});
-        }) 
+        })
       }
     }
-    window.location.reload();
+   /*  window.location.reload(); */
   };
 
   const [actualExercise, setActualExercise] = useState('');
@@ -191,7 +177,8 @@ const ExercisesContextProvider = (props) => {
         string3Exercise, setString3Exercise,
         string4Exercise, setString4Exercise,
         string5Exercise, setString5Exercise,
-        string6Exercise, setString6Exercise}}>
+        string6Exercise, setString6Exercise,
+        reset}}>
       {props.children}
     </ExercisesContext.Provider>
   );

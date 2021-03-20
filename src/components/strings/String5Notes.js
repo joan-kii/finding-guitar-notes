@@ -17,8 +17,8 @@ const Alert = (props) => {
 
 const String5Notes = () => {
 
-  const notesString5 = ['A', 'A#/Bb', 'B', 'C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab', 'a'];
-  const { exercises, setExercises, setActualExercise } = useContext(ExercisesContext);
+  const { string5Exercise, setString5Exercise, setActualExercise } = useContext(ExercisesContext);
+  const notesString5 = Object.keys(string5Exercise);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -27,7 +27,7 @@ const String5Notes = () => {
 
 
   useEffect(() => {
-    setActualExercise(exercises.notesExercises.string_5);
+    setActualExercise(string5Exercise);
   });
 
   const closeMessage = () => {
@@ -41,12 +41,12 @@ const String5Notes = () => {
 
   useEffect(() => {
     if (rightNotes === 13) {
-       setExercises((prevState) => {
-        prevState.notesExercises.string_5.completed = true;
+      setString5Exercise((prevState) => {
+        prevState.completed = true;
         return ({...prevState});
       })
     }
-  }, [rightNotes, setExercises]);
+  }, [rightNotes, setString5Exercise]);
 
   const handleClose = (anchorEl, noteSelected) => {
     
@@ -55,8 +55,8 @@ const String5Notes = () => {
       anchorEl.classList.remove('clickable');
       anchorEl.classList.add('correct');
       anchorEl.setAttribute('data-before', note);
-      setExercises((prevState) => {
-        prevState.notesExercises.string_5[noteSelected].completed = true;
+      setString5Exercise((prevState) => {
+        prevState[noteSelected].completed = true;
         return ({...prevState});
       });
       setRightNotes(rightNotes + 1);
@@ -125,8 +125,7 @@ const String5Notes = () => {
       </div>
       <InfozoneStringNotes 
         notesString={notesString5}
-        string= 'string_5'
-        rightNotes={rightNotes} />
+        string={string5Exercise} />
     </div>
   );
 }; 
