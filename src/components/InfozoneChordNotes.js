@@ -11,7 +11,7 @@ import { ExercisesContext } from './Exercises';
 const theme = createMuiTheme ({
   palette: {
     primary: {
-      main: '#008080',
+      main: '#555555',
     }
   }
 });

@@ -26,19 +26,24 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    flexGrow: 0.7,
     color: theme.palette.common.white,
     textDecoration: 'none',
     cursor: 'pointer'
   },
   exerciseName: {
-    flexGrow: 1,
+    marginLeft: '21em',
+    marginRight: '20em',
     fontSize: '1.5em',
     cursor: 'context-menu',
+  },
+  menuChoice: {
+    marginLeft: '18em',
   },
   resetButton: {
     marginRight: '4em',
   },
+  login: {
+  }
 }));
 
 const Topbar = () => {
@@ -47,6 +52,8 @@ const Topbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const { actualExercise, choiceMenu, resetExercise } = useContext(ExercisesContext);
+
+  const titleClassName = actualExercise ? classes.exerciseName : classes.menuChoice; 
 
   const handleAuth = (event) => {
     setAnchorEl(event.currentTarget);
@@ -78,7 +85,7 @@ const Topbar = () => {
               Finding Guitar Notes
             </Typography>
           </Link>
-          <Typography variant='h3' className={classes.exerciseName}>
+          <Typography variant='h3' className={titleClassName}>
             {actualExercise.title || choiceMenu}
           </Typography>
           { actualExercise ? 
@@ -90,6 +97,7 @@ const Topbar = () => {
                   Reset Exercise
               </Button> : ''}
           <IconButton 
+            className={classes.login}
             edge='end'
             onClick={handleAuth}
             aria-label='account of current user'

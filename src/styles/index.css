@@ -21,7 +21,7 @@ body {
   flex-direction: column;
   min-width: 100vw;
   height: calc(var(--fretboard-height) * 1vh);
-  background: #be975b;
+  background: #be975b url(../assets/wood-pattern.png);
 }
 
 .string {
@@ -82,7 +82,7 @@ body {
   border-radius: 5px;
   line-height: 33px;
   text-align: center;
-  background: teal;
+  background: #555555;
   z-index: 2;
   color: #eee;
 }

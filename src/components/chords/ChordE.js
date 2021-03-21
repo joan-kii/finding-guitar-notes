@@ -64,11 +64,19 @@ const ChordE = () => {
     for (let string of fretboard) {
       const newString = string.props.children;
       for (let fret of newString) {
-        const newFret = React.cloneElement(fret, 
-          {id: newString.indexOf(fret), onClick: handleClick}, null);
-        newString.splice(newString.indexOf(fret), 1, newFret);
+      const newFret = React.cloneElement(fret, 
+        {id: newString.indexOf(fret), onClick: handleClick}, null);
+        if (fret.key === '13' && string.key === '1') {
+          const newLastFret = React.createElement('div', {id: newString.indexOf(fret), 
+            key: fret.key, className: 'note-fret clickable', onClick: handleClick}, 
+            React.createElement('div', {key: fret.key, className: 'double-fretmark'}, ''));
+          newString.splice(newString.indexOf(fret), 1, newLastFret);
+        } else {
+          newString.splice(newString.indexOf(fret), 1, newFret);
+        }
       }
-    }return fretboard;
+    }
+    return fretboard;
   };
 
   return (
