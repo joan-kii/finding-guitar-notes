@@ -5,6 +5,9 @@ export const ExercisesContext = createContext();
 const ExercisesContextProvider = (props) => {
 
   const [reset, setReset] = useState(true);
+  const [actualExercise, setActualExercise] = useState('');
+  const [choiceMenu, setChoiceMenu] = useState('');
+
   const resetExercise = (exercise) => {
     setReset(false);
     for (let note in exercise) {
@@ -44,13 +47,15 @@ const ExercisesContextProvider = (props) => {
           prevState.completed = false;
           return ({...prevState});
         })
+      } else {
+        setExercises((prevState) => {
+          prevState[exercise.title.slice(-1)].completed = false;
+          return ({...prevState});
+
+        })
       }
     }
   };
-
-  const [actualExercise, setActualExercise] = useState('');
-  const [choiceMenu, setChoiceMenu] = useState('');
-  const [userSigned, setUserSigned] = useState(false);
 
   const [string1Exercise, setString1Exercise] = useState({
     'E': {completed: false},
@@ -156,16 +161,15 @@ const ExercisesContextProvider = (props) => {
   });
 
   const [exercises, setExercises] = useState({
-    chordExercises: {
-      'A': {title: 'Chord A', completed: false},
-      'B': {title: 'Chord B', completed: false},
-      'C': {title: 'Chord C', completed: false},
-      'D': {title: 'Chord D', completed: false},
-      'E': {title: 'Chord E', completed: false},
-      'F': {title: 'Chord F', completed: false},
-      'G': {title: 'Chord G', completed: false},
-      },
+    'A': {title: 'Chord A', completed: false},
+    'B': {title: 'Chord B', completed: false},
+    'C': {title: 'Chord C', completed: false},
+    'D': {title: 'Chord D', completed: false},
+    'E': {title: 'Chord E', completed: false},
+    'F': {title: 'Chord F', completed: false},
+    'G': {title: 'Chord G', completed: false},
   });
+
   return (
     <ExercisesContext.Provider 
       value={{exercises, setExercises, 

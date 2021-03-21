@@ -68,6 +68,7 @@ const InfozoneChordNotes = ({ notesChord, chord, rightNotes }) => {
             <Container className={classes.results}>
               {notesChord.map((fret, index) => {
                 return <Chip 
+                  key={index}
                   className={classes.chip} 
                   size='small' 
                   label={`String ${index + 1}`} 
@@ -80,8 +81,8 @@ const InfozoneChordNotes = ({ notesChord, chord, rightNotes }) => {
                 className={classes.chip} 
                 size='medium' 
                 label={`Chord ${chord}`} 
-                color={exercises.chordExercises[chord].completed ? 'primary' : 'default'}
-                icon={exercises.chordExercises[chord].completed ? <DoneIcon /> : null} />
+                color={exercises[chord].completed ? 'primary' : 'default'}
+                icon={exercises[chord].completed ? <DoneIcon /> : null} />
             </Container>
           </MuiThemeProvider>
         </Paper>
