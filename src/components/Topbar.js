@@ -19,8 +19,14 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   }, 
   toolbar: {
+    justifyContent: 'space-between',
     background: '#424242',
     height: '8vh',
+  },
+  navigation: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -38,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
   },
   menuChoice: {
     marginLeft: '18em',
+    marginRight: '27em',
+    fontSize: '1.5em',
+    cursor: 'context-menu',
   },
   resetButton: {
     marginRight: '4em',
@@ -68,23 +77,25 @@ const Topbar = () => {
       <AppBar 
         position='static'>
         <Toolbar className={classes.toolbar}>
-          <IconButton 
-            edge='start' 
-            onClick={openMenu}
-            aria-label='open drawer'
-            className={classes.menuButton}
-            color='inherit'>
-            <MenuIcon  />
-          </IconButton>
-          <Link className={classes.title} to='/'>
-            <Typography 
-              variant='h5'
-              component={motion.h1} 
-              initial={{y: -200}}
-              animate={{y: -1}} >
-              Finding Guitar Notes
-            </Typography>
-          </Link>
+          <div className={classes.navigation}>
+            <IconButton 
+              edge='start' 
+              onClick={openMenu}
+              aria-label='open drawer'
+              className={classes.menuButton}
+              color='inherit'>
+              <MenuIcon  />
+            </IconButton>
+            <Link className={classes.title} to='/'>
+              <Typography 
+                variant='h5'
+                component={motion.h1} 
+                initial={{y: -200}}
+                animate={{y: -1}} >
+                Finding Guitar Notes
+              </Typography>
+            </Link>
+          </div>
           <Typography variant='h3' className={titleClassName}>
             {actualExercise.title || choiceMenu}
           </Typography>
