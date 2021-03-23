@@ -39,38 +39,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
-
-    <script>
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      var firebaseConfig = {
-        apiKey: "AIzaSyDpAJzq_CPqcru-LsqvNmkkwpuYWv1eLDk",
-        authDomain: "finding-guitar-notes.firebaseapp.com",
-        projectId: "finding-guitar-notes",
-        storageBucket: "finding-guitar-notes.appspot.com",
-        messagingSenderId: "304553686128",
-        appId: "1:304553686128:web:9c67395cee802a3254b0b5",
-        measurementId: "G-735C6ZN71E"
-      };
-
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-
-      // Create auth and database refs 
-
-      const auth = firebase.auth();
-      const db = firebase.firestore();
-
-      db.settings({ timestampsInSnapshots: true });
-      </script>
   </body>
 </html>

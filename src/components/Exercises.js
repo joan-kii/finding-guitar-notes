@@ -47,11 +47,10 @@ const ExercisesContextProvider = (props) => {
           prevState.completed = false;
           return ({...prevState});
         })
-      } else {
+      } else if (Object.keys(exercise).length === 2) {
         setExercises((prevState) => {
           prevState[exercise.title.slice(-1)].completed = false;
           return ({...prevState});
-
         })
       }
     }
