@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Context } from '../context/Context';
 import LeftMenu from './LeftMenu';
+import Signup from './Signup';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -11,6 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import Modal from '@material-ui/core/Modal';
 import { motion } from 'framer-motion';
 
 const useStyles = makeStyles((theme) => ({
@@ -51,8 +53,6 @@ const useStyles = makeStyles((theme) => ({
   resetButton: {
     marginRight: '4em',
   },
-  login: {
-  }
 }));
 
 const Topbar = () => {
@@ -60,16 +60,22 @@ const Topbar = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const { actualExercise, choiceMenu, resetExercise } = useContext(Context);
 
   const titleClassName = actualExercise ? classes.exerciseName : classes.menuChoice; 
 
   const handleAuth = (event) => {
+    setOpenModal(true);
     setAnchorEl(event.currentTarget);
   };
 
   const openMenu = () => {
     setOpenDrawer(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
   };
   
   return (
@@ -119,6 +125,13 @@ const Topbar = () => {
           </IconButton>
         </Toolbar>
       </AppBar>
+      <Modal 
+        open={openModal} 
+        onClose={handleCloseModal} 
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description">
+        <Signup />
+      </Modal>
       <LeftMenu open={openDrawer} setOpen={setOpenDrawer} />
     </div>
   );
