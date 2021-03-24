@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { ExercisesContext } from '../Exercises';
+import { Context } from '../../context/Context';
 import InfozoneChordNotes from '../InfozoneChordNotes';
 import Fretboard from '../Fretboard';
 import { createFretboard } from '../../modules/createFretboard';
@@ -18,7 +18,7 @@ const ChordC = () => {
   const [rightNotes, setRightNotes] = useState([0, 0, 0, 0, 0]);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailMessage, setShowFailMessage] = useState(false);
-  const { exercises, setExercises, setActualExercise, reset } = useContext(ExercisesContext);
+  const { exercises, setExercises, setActualExercise, reset } = useContext(Context);
 
   useEffect(() => {
     setActualExercise(exercises[chord]);
@@ -84,7 +84,7 @@ const ChordC = () => {
       <div>
         <Fretboard fretboard={chordCFretboard} />
         <Snackbar open={showSuccessMessage} autoHideDuration={2000} onClose={closeMessage}>
-            <Alert severity='success'>That's rigth!</Alert>
+            <Alert severity='success'>That's right!</Alert>
         </Snackbar>
         <Snackbar open={showFailMessage} autoHideDuration={2000} onClose={closeMessage}>
           <Alert severity='error'>Try again</Alert>

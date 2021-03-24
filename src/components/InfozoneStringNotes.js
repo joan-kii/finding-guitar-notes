@@ -6,7 +6,7 @@ import Chip from '@material-ui/core/Chip';
 import DoneIcon from '@material-ui/icons/Done';
 import { makeStyles } from '@material-ui/core/styles';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import { ExercisesContext } from './Exercises';
+import { Context } from '../context/Context';
 
 const theme = createMuiTheme ({
   palette: {
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
 const InfozoneStringNotes = ({ notesString, string }) => {
   
-  const { actualExercise } = useContext(ExercisesContext);
+  const { actualExercise } = useContext(Context);
   const classes = useStyles();
 
   return (

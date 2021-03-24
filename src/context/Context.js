@@ -1,8 +1,8 @@
 import React, { useState, createContext } from 'react';
 
-export const ExercisesContext = createContext();
+export const Context = createContext();
 
-const ExercisesContextProvider = (props) => {
+const ContextProvider = (props) => {
 
   const [reset, setReset] = useState(true);
   const [actualExercise, setActualExercise] = useState('');
@@ -170,7 +170,7 @@ const ExercisesContextProvider = (props) => {
   });
 
   return (
-    <ExercisesContext.Provider 
+    <Context.Provider 
       value={{exercises, setExercises, 
         actualExercise, setActualExercise, 
         resetExercise, choiceMenu, setChoiceMenu, 
@@ -182,9 +182,9 @@ const ExercisesContextProvider = (props) => {
         string6Exercise, setString6Exercise,
         reset, setReset}}>
       {props.children}
-    </ExercisesContext.Provider>
+    </Context.Provider>
   );
 };
 
-export default ExercisesContextProvider;
+export default ContextProvider;
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { ExercisesContext } from './Exercises';
+import { Context } from '../context/Context';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 const Chords = () => {
 
   const classes = useStyles();
-  const { setActualExercise, setChoiceMenu } = useContext(ExercisesContext);
+  const { setActualExercise, setChoiceMenu } = useContext(Context);
 
   useEffect(() => {
     setActualExercise('');

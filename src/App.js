@@ -3,7 +3,7 @@ import Topbar from './components/Topbar';
 import SelectGame from './components/SelectGame';
 import Chords from './components/Chords';
 import Notes from './components/Notes'; 
-import ExercisesContextProvider from './components/Exercises';
+import ContextProvider from './context/Context';
 import String1Notes from './components/strings/String1Notes'; 
 import String2Notes from './components/strings/String2Notes'; 
 import String3Notes from './components/strings/String3Notes'; 
@@ -25,7 +25,7 @@ const App = () => {
   return (
     <div className='app'>
       <Router>
-        <ExercisesContextProvider>
+        <ContextProvider>
           <Topbar />
           <Switch>
             <Route exact path='/' component={SelectGame} />
@@ -45,7 +45,7 @@ const App = () => {
             <Route path='/chord-f' component={ChordF} />
             <Route path='/chord-g' component={ChordG} />
           </ Switch>
-        </ExercisesContextProvider> 
+        </ContextProvider> 
       </ Router>
       <Footer />
     </div>

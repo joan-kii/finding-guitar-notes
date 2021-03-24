@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { ExercisesContext } from '../Exercises';
+import { Context } from '../../context/Context';
 import Fretboard from '../Fretboard';
 import InfozoneStringNotes from '../InfozoneStringNotes';
 import { createFretboard } from '../../modules/createFretboard';
@@ -14,7 +14,7 @@ const Alert = (props) => {
 
 const String2Notes = () => {
 
-  const { string2Exercise, setString2Exercise, setActualExercise } = useContext(ExercisesContext);
+  const { string2Exercise, setString2Exercise, setActualExercise } = useContext(Context);
   const notesString2 = Object.keys(string2Exercise);
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -121,7 +121,7 @@ const String2Notes = () => {
           ))}
         </Menu>
         <Snackbar open={showSuccessMessage} autoHideDuration={2000} onClose={closeMessage}>
-          <Alert severity='success'>That's rigth!</Alert>
+          <Alert severity='success'>That's right!</Alert>
         </Snackbar>
         <Snackbar open={showFailMessage} autoHideDuration={2000} onClose={closeMessage}>
           <Alert severity='error'>Try again</Alert>

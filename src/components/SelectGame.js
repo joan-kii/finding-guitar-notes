@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { ExercisesContext } from './Exercises';
+import { Context } from '../context/Context';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import ButtonBase from '@material-ui/core/ButtonBase';
@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SelectGame = () => {
 
-  const { setActualExercise, setChoiceMenu } = useContext(ExercisesContext);
+  const { setActualExercise, setChoiceMenu } = useContext(Context);
   useEffect(() => {
     setActualExercise('');
     setChoiceMenu('');

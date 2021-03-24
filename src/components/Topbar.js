@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { ExercisesContext } from './Exercises';
+import { Context } from '../context/Context';
 import LeftMenu from './LeftMenu';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -60,7 +60,7 @@ const Topbar = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
-  const { actualExercise, choiceMenu, resetExercise } = useContext(ExercisesContext);
+  const { actualExercise, choiceMenu, resetExercise } = useContext(Context);
 
   const titleClassName = actualExercise ? classes.exerciseName : classes.menuChoice; 
 

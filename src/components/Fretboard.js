@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from 'react';
-import { ExercisesContext } from './Exercises';
+import { Context } from '../context/Context';
 
 
 const Fretboard = ({ fretboard }) => {
   
-  const { reset, setReset } = useContext(ExercisesContext);
+  const { reset, setReset } = useContext(Context);
   
   useEffect(() => {
     setReset(true);

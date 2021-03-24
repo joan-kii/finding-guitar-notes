@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { ExercisesContext } from '../Exercises';
+import { Context } from '../../context/Context';
 import Fretboard from '../Fretboard';
 import InfozoneStringNotes from '../InfozoneStringNotes';
 import { createFretboard } from '../../modules/createFretboard';
@@ -14,7 +14,7 @@ const Alert = (props) => {
 
 const String3Notes = () => {
 
-  const { string3Exercise, setString3Exercise, setActualExercise } = useContext(ExercisesContext);
+  const { string3Exercise, setString3Exercise, setActualExercise } = useContext(Context);
   const notesString3 = Object.keys(string3Exercise);
 
   const [anchorEl, setAnchorEl] = useState(null);

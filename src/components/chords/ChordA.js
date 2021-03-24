@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { ExercisesContext } from '../Exercises';
+import { Context } from '../../context/Context';
 import InfozoneChordNotes from '../InfozoneChordNotes';
 import Fretboard from '../Fretboard';
 import { createFretboard } from '../../modules/createFretboard';
@@ -18,7 +18,7 @@ const ChordA = () => {
   const [rightNotes, setRightNotes] = useState([0, 0, 0, 0, 0]);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailMessage, setShowFailMessage] = useState(false);
-  const { exercises, setExercises, setActualExercise, reset } = useContext(ExercisesContext);
+  const { exercises, setExercises, setActualExercise, reset } = useContext(Context);
 
   useEffect(() => {
     setActualExercise(exercises[chord]);
