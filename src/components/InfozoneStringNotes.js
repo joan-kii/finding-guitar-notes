@@ -11,7 +11,7 @@ import { Context } from '../context/Context';
 const theme = createMuiTheme ({
   palette: {
     primary: {
-      main: '#008080',
+      main: '#555555',
     }
   }
 });
@@ -19,6 +19,7 @@ const theme = createMuiTheme ({
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    background: '#323232',
   }, 
   container: {
     paddingTop: theme.spacing(4),

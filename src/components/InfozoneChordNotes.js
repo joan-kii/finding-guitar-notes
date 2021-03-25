@@ -13,12 +13,13 @@ const theme = createMuiTheme ({
     primary: {
       main: '#555555',
     }
-  }
+  },
 });
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    background: '#323232',
   }, 
   container: {
     paddingTop: theme.spacing(4),

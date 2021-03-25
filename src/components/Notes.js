@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
+    background: '#323232',
   },
   text: {
     color: theme.palette.common.white,

@@ -26,9 +26,13 @@ const images = [
 ];
 
 const useStyles = makeStyles((theme) => ({
+  main: {
+    background: '#323232',
+  },
   welcome: {
     color: theme.palette.common.white,
     padding: theme.spacing(12, 0, 12),
+    background: '#323232',
   },
   text: {
     fontSize: 20,
@@ -39,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 200,
     width: 'auto',
     justifyContent: 'center',
+    background: '#323232',
   },
   image: {
     position: 'relative',
@@ -118,7 +123,7 @@ const SelectGame = () => {
   const classes = useStyles();
 
   return (
-    <main>
+    <main className={classes.main}>
       <div className={classes.welcome}>
         <Container maxWidth='sm'>
           <Typography component='h2' variant='h4' align='center'>
