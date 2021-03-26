@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Avatar from '@material-ui/core/Avatar';
@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import Typography from '@material-ui/core/Typography';
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     display: 'flex',
     position: 'absolute',
-    top: '30%',
+    top: '15%',
     left: '30%',
     width: '40%',
     flexDirection: 'column',
@@ -36,12 +37,19 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     fontSize: 18,
+    marginTop: theme.spacing(4),
+  },
+  button: {
+    marginTop: theme.spacing(4),
   },
 }));
 
 const Signup = () => {
 
   const classes = useStyles();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef();
 
   return (
     <Container>
@@ -56,8 +64,8 @@ const Signup = () => {
             Sign up
         </Typography>
         <form className={classes.form}>
-          <Grid container spacing={2}>
-            <Grid item>
+          <Grid container spacing={4}>
+            <Grid container xs={12} justify='center'>
               <ButtonGroup 
                 variant='contained' 
                 size='large' 
@@ -72,42 +80,50 @@ const Signup = () => {
                 </Button>
               </ButtonGroup>
             </Grid>
-            <Grid item>
+            <Grid item xs={12}>
               <TextField required 
                 id='email'
+                type='email'
                 fullWidth
                 label='Email'
                 variant='outlined'
-                defaultValue='Your email' />
+                imputRef={emailRef} />
             </Grid>
-            <Grid item>
+            <Grid item xs={12}>
               <TextField required 
                 id='password'
+                type='password'
                 fullWidth
                 label='Password'
                 variant='outlined'
-                defaultValue='Password' />
+                imputRef={passwordRef} />
             </Grid>
-            <Grid item>
+            <Grid item xs={12}>
               <TextField required 
-                id='passwordConfirm'
+                id='confirmPassword'
+                type='password'
                 fullWidth
                 label='Confirm Password'
                 variant='outlined'
-                defaultValue='Confirm Password' />
+                imputRef={confirmPasswordRef} />
             </Grid>
           </Grid>
           <Button 
+            className={classes.button}
             variant='contained' 
             size='large'
             fullWidth>
             Sign up
           </Button>
-          <Typography 
-            variant='h6'
-            className={classes.text}>
-              Already have an account? Log In.
-          </Typography>
+          <Grid container justify='flex-end'>
+            <Grid item>
+              <Link
+                variant='subtitle1'
+                className={classes.text}>
+                  Already have an account? Log In.
+              </Link>
+            </Grid>
+          </Grid>
         </form>
       </Paper>  
     </Container>
