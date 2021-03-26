@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Context } from '../context/Context';
 import LeftMenu from './LeftMenu';
-import Signup from './Signup';
+import SignupForm from './SignupForm';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -77,6 +77,8 @@ const Topbar = () => {
   const handleCloseModal = () => {
     setOpenModal(false);
   };
+
+  const renderSignup = (<div><SignupForm /></div>);
   
   return (
     <div className={classes.root}>
@@ -130,7 +132,7 @@ const Topbar = () => {
         onClose={handleCloseModal} 
         aria-labelledby="modal-title"
         aria-describedby="modal-description">
-        <Signup />
+        {renderSignup}
       </Modal>
       <LeftMenu open={openDrawer} setOpen={setOpenDrawer} />
     </div>

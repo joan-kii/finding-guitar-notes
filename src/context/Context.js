@@ -1,12 +1,29 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
+import { auth } from '../firebase';
 
 export const Context = createContext();
+export const useAuth = () => {
+  return useContext(Context);
+};
 
 const ContextProvider = (props) => {
 
   const [reset, setReset] = useState(true);
   const [actualExercise, setActualExercise] = useState('');
   const [choiceMenu, setChoiceMenu] = useState('');
+  const [currentUser, setCurrentUser] = useState();
+
+  const signup = (email, password) => {
+    return auth.createUserWithEmailAndPassword(email, password);
+  };
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      setCurrentUser(user);
+    });
+
+    return unsubscribe;
+  }, [])
 
   const resetExercise = (exercise) => {
     setReset(false);
@@ -169,18 +186,22 @@ const ContextProvider = (props) => {
     'G': {title: 'Chord G', completed: false},
   });
 
+  const value = {
+    exercises, setExercises, 
+    actualExercise, setActualExercise, 
+    resetExercise, choiceMenu, setChoiceMenu, 
+    string1Exercise, setString1Exercise,
+    string2Exercise, setString2Exercise,
+    string3Exercise, setString3Exercise,
+    string4Exercise, setString4Exercise,
+    string5Exercise, setString5Exercise,
+    string6Exercise, setString6Exercise,
+    reset, setReset, currentUser, signup,
+  };
+
   return (
     <Context.Provider 
-      value={{exercises, setExercises, 
-        actualExercise, setActualExercise, 
-        resetExercise, choiceMenu, setChoiceMenu, 
-        string1Exercise, setString1Exercise,
-        string2Exercise, setString2Exercise,
-        string3Exercise, setString3Exercise,
-        string4Exercise, setString4Exercise,
-        string5Exercise, setString5Exercise,
-        string6Exercise, setString6Exercise,
-        reset, setReset}}>
+      value={value}>
       {props.children}
     </Context.Provider>
   );

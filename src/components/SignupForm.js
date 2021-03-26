@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { useAuth } from '../context/Context';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Avatar from '@material-ui/core/Avatar';
@@ -12,7 +13,8 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-
+import Alert from '@material-ui/lab/Alert';
+ 
 const useStyles = makeStyles((theme) => ({
   paper: {
     display: 'flex',
@@ -44,12 +46,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Signup = () => {
+const SignupForm = () => {
 
   const classes = useStyles();
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
+  const { signup } = useAuth();
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  async function handleSignup(e) {
+    e.preventDefault();
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      return setError('Passwords do not match')
+    }
+    try {
+      setError('');
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError('Failed to create un account')
+    }
+    setLoading(false);
+  };
 
   return (
     <Container>
@@ -63,9 +83,10 @@ const Signup = () => {
           className={classes.title}>
             Sign up
         </Typography>
-        <form className={classes.form}>
+        {error && <Alert severity='error'>{error}</Alert>}
+        <form className={classes.form} onSubmit={handleSignup}>
           <Grid container spacing={4}>
-            <Grid container xs={12} justify='center'>
+            <Grid container justify='center'>
               <ButtonGroup 
                 variant='contained' 
                 size='large' 
@@ -87,7 +108,7 @@ const Signup = () => {
                 fullWidth
                 label='Email'
                 variant='outlined'
-                imputRef={emailRef} />
+                inputRef={emailRef} />
             </Grid>
             <Grid item xs={12}>
               <TextField required 
@@ -96,7 +117,7 @@ const Signup = () => {
                 fullWidth
                 label='Password'
                 variant='outlined'
-                imputRef={passwordRef} />
+                inputRef={passwordRef} />
             </Grid>
             <Grid item xs={12}>
               <TextField required 
@@ -105,13 +126,15 @@ const Signup = () => {
                 fullWidth
                 label='Confirm Password'
                 variant='outlined'
-                imputRef={confirmPasswordRef} />
+                inputRef={confirmPasswordRef} />
             </Grid>
           </Grid>
           <Button 
+            type='submit'
             className={classes.button}
             variant='contained' 
             size='large'
+            disabled={loading}
             fullWidth>
             Sign up
           </Button>
@@ -130,4 +153,4 @@ const Signup = () => {
   )
 };
 
-export default Signup;
+export default SignupForm;
