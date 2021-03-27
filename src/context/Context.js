@@ -1,4 +1,5 @@
 import React, { useState, createContext, useContext, useEffect } from 'react';
+import firebase from 'firebase/app';
 import { auth } from '../firebase';
 
 export const Context = createContext();
@@ -26,6 +27,11 @@ const ContextProvider = (props) => {
 
   const logout = () => {
     return auth.signOut();
+  };
+
+  const googleSignup = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    return auth.signInWithPopup(provider);
   };
 
   useEffect(() => {
@@ -211,7 +217,8 @@ const ContextProvider = (props) => {
     reset, setReset, currentUser, signup, 
     login, logout,
     openSignupModal, setOpenSignupModal,
-    openLoginModal,setOpenLoginModal
+    openLoginModal,setOpenLoginModal,
+    googleSignup
   };
 
   return (
