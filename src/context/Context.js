@@ -24,6 +24,10 @@ const ContextProvider = (props) => {
     return auth.signInWithEmailAndPassword(email, password);
   };
 
+  const logout = () => {
+    return auth.signOut();
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user);
@@ -204,7 +208,8 @@ const ContextProvider = (props) => {
     string4Exercise, setString4Exercise,
     string5Exercise, setString5Exercise,
     string6Exercise, setString6Exercise,
-    reset, setReset, currentUser, signup, login,
+    reset, setReset, currentUser, signup, 
+    login, logout,
     openSignupModal, setOpenSignupModal,
     openLoginModal,setOpenLoginModal
   };

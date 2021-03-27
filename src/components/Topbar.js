@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Context } from '../context/Context';
+import { Context, useAuth } from '../context/Context';
 import LeftMenu from './LeftMenu';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
@@ -13,6 +13,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
 import RefreshIcon from '@material-ui/icons/Refresh';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Modal from '@material-ui/core/Modal';
 import { motion } from 'framer-motion';
 
@@ -54,6 +55,8 @@ const useStyles = makeStyles((theme) => ({
   resetButton: {
     marginRight: '4em',
   },
+  logoutButton: {
+  },
 }));
 
 const Topbar = () => {
@@ -64,6 +67,8 @@ const Topbar = () => {
   const { actualExercise, choiceMenu, 
     resetExercise, openSignupModal, setOpenSignupModal, 
     openLoginModal, setOpenLoginModal} = useContext(Context);
+  
+  const { currentUser, logout } = useAuth();
 
   const titleClassName = actualExercise ? classes.exerciseName : classes.menuChoice; 
 
@@ -82,6 +87,10 @@ const Topbar = () => {
 
   const handleCloseLoginModal = () => {
     setOpenLoginModal(false);
+  };
+
+  async function handleLogout() {
+      await logout();
   };
 
   const renderSignup = (<div><SignupForm /></div>);
@@ -122,16 +131,25 @@ const Topbar = () => {
                 onClick={() => resetExercise(actualExercise)} >
                   Reset Exercise
               </Button> : ''}
-          <IconButton 
-            className={classes.login}
-            edge='end'
-            onClick={handleAuth}
-            aria-label='account of current user'
-            aria-controls='menu-appbar'
-            aria-haspopup='true'
-            color='inherit'>
-            <AccountCircle />
-          </IconButton>
+          {currentUser ? 
+            <Button 
+              className={classes.logoutButton}
+              variant='contained'
+              endIcon={<ExitToAppIcon />}
+              onClick={handleLogout} >
+              Log Out
+            </Button> : 
+            <IconButton 
+              className={classes.login}
+              edge='end'
+              onClick={handleAuth}
+              aria-label='account of current user'
+              aria-controls='menu-appbar'
+              aria-haspopup='true'
+              color='inherit'>
+              <AccountCircle />
+            </IconButton>
+            }
         </Toolbar>
       </AppBar>
       <Modal 
