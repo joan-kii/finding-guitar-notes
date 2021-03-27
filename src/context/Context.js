@@ -34,6 +34,11 @@ const ContextProvider = (props) => {
     return auth.signInWithPopup(provider);
   };
 
+  const githubSignup = () => {
+    const provider = new firebase.auth.GithubAuthProvider();
+    return auth.signInWithPopup(provider);
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user);
@@ -218,7 +223,7 @@ const ContextProvider = (props) => {
     login, logout,
     openSignupModal, setOpenSignupModal,
     openLoginModal,setOpenLoginModal,
-    googleSignup
+    googleSignup, githubSignup
   };
 
   return (

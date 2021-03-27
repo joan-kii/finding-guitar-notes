@@ -56,7 +56,7 @@ const LoginForm = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { setOpenLoginModal, setOpenSignupModal,
-    googleSignup } = useContext(Context);
+    googleSignup, githubSignup } = useContext(Context);
 
   const toggleModal = () => {
     setOpenSignupModal(true);
@@ -81,6 +81,18 @@ const LoginForm = () => {
       setError('');
       setLoading(true);
       await googleSignup();
+    } catch {
+      console.error(error.message);
+    }
+    setLoading(false);
+    setOpenLoginModal(false);
+  }
+
+  async function handleGithubLogin() {
+    try {
+      setError('');
+      setLoading(true);
+      await githubSignup();
     } catch {
       console.error(error.message);
     }
@@ -115,7 +127,9 @@ const LoginForm = () => {
                 </SvgIcon>}>
                   Log In with Google
                 </Button>
-                <Button startIcon={<GitHubIcon />}>
+                <Button
+                  onClick={handleGithubLogin}
+                  startIcon={<GitHubIcon />}>
                   Log In with Github
                 </Button>
               </ButtonGroup>

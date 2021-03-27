@@ -57,7 +57,7 @@ const SignupForm = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { setOpenSignupModal, setOpenLoginModal,
-    googleSignup } = useContext(Context);
+    googleSignup, githubSignup } = useContext(Context);
 
   const toggleModal = () => {
     setOpenLoginModal(true);
@@ -92,6 +92,18 @@ const SignupForm = () => {
     setOpenSignupModal(false);
   }
 
+  async function handleGithubSignup() {
+    try {
+      setError('');
+      setLoading(true);
+      await githubSignup();
+    } catch {
+      console.error(error.message);
+    }
+    setLoading(false);
+    setOpenSignupModal(false);
+  }
+
   return (
     <Container>
       <Paper className={classes.paper}>
@@ -119,7 +131,9 @@ const SignupForm = () => {
                 </SvgIcon>}>
                   Sign up with Google
                 </Button>
-                <Button startIcon={<GitHubIcon />}>
+                <Button 
+                  onClick={handleGithubSignup}
+                  startIcon={<GitHubIcon />}>
                   Sign up with Github
                 </Button>
               </ButtonGroup>
