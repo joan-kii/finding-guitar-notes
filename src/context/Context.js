@@ -12,14 +12,22 @@ const ContextProvider = (props) => {
   const [actualExercise, setActualExercise] = useState('');
   const [choiceMenu, setChoiceMenu] = useState('');
   const [currentUser, setCurrentUser] = useState();
+  const [openSignupModal, setOpenSignupModal] = useState(false);
+  const [openLoginModal, setOpenLoginModal] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const signup = (email, password) => {
     return auth.createUserWithEmailAndPassword(email, password);
   };
 
+  const login = (email, password) => {
+    return auth.signInWithEmailAndPassword(email, password);
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user);
+      setLoading(false);
     });
 
     return unsubscribe;
@@ -196,13 +204,15 @@ const ContextProvider = (props) => {
     string4Exercise, setString4Exercise,
     string5Exercise, setString5Exercise,
     string6Exercise, setString6Exercise,
-    reset, setReset, currentUser, signup,
+    reset, setReset, currentUser, signup, login,
+    openSignupModal, setOpenSignupModal,
+    openLoginModal,setOpenLoginModal
   };
 
   return (
     <Context.Provider 
       value={value}>
-      {props.children}
+      {!loading && props.children}
     </Context.Provider>
   );
 };

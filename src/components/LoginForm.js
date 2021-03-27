@@ -47,36 +47,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignupForm = () => {
+const LoginForm = () => {
 
   const classes = useStyles();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const confirmPasswordRef = useRef();
-  const { signup } = useAuth();
+  const { login } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { setOpenSignupModal, setOpenLoginModal } = useContext(Context);
+  const { setOpenLoginModal, setOpenSignupModal } = useContext(Context);
 
   const toggleModal = () => {
-    setOpenLoginModal(true);
-    setOpenSignupModal(false);
+    setOpenSignupModal(true);
+    setOpenLoginModal(false);
   };
 
-  async function handleSignup(e) {
+  async function handleLogin(e) {
     e.preventDefault();
-    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      return setError('Passwords do not match')
-    }
     try {
       setError('');
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      await login(emailRef.current.value, passwordRef.current.value);
     } catch {
-      setError('Failed to create un account')
+      setError('Failed to log in')
     }
     setLoading(false);
-    setOpenSignupModal(false);
+    setOpenLoginModal(false);
   };
 
   return (
@@ -89,10 +85,10 @@ const SignupForm = () => {
           component='h2'
           variant='h3' 
           className={classes.title}>
-            Sign up
+            Log In
         </Typography>
         {error && <Alert severity='error'>{error}</Alert>}
-        <form className={classes.form} onSubmit={handleSignup}>
+        <form className={classes.form} onSubmit={handleLogin}>
           <Grid container spacing={4}>
             <Grid container justify='center'>
               <ButtonGroup 
@@ -102,10 +98,10 @@ const SignupForm = () => {
                 <Button endIcon={<SvgIcon htmlColor='#c0392b'>
                   <svg role="img" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><title>Google icon</title><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
                 </SvgIcon>}>
-                  Sign up with Gmail
+                  Log In with Gmail
                 </Button>
                 <Button startIcon={<GitHubIcon />}>
-                  Sign up with Github
+                  Log In with Github
                 </Button>
               </ButtonGroup>
             </Grid>
@@ -127,15 +123,6 @@ const SignupForm = () => {
                 variant='outlined'
                 inputRef={passwordRef} />
             </Grid>
-            <Grid item xs={12}>
-              <TextField required 
-                id='confirmPassword'
-                type='password'
-                fullWidth
-                label='Confirm Password'
-                variant='outlined'
-                inputRef={confirmPasswordRef} />
-            </Grid>
           </Grid>
           <Button 
             type='submit'
@@ -144,7 +131,7 @@ const SignupForm = () => {
             size='large'
             disabled={loading}
             fullWidth>
-            Sign up
+            Log In
           </Button>
           <Grid container justify='flex-end'>
             <Grid item>
@@ -152,7 +139,7 @@ const SignupForm = () => {
                 variant='subtitle1'
                 className={classes.text}
                 onClick={toggleModal}>
-                  Already have an account? Log In.
+                  Need an account? Sign up.
               </Link>
             </Grid>
           </Grid>
@@ -162,4 +149,4 @@ const SignupForm = () => {
   )
 };
 
-export default SignupForm;
+export default LoginForm;

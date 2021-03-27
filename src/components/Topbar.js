@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Context } from '../context/Context';
 import LeftMenu from './LeftMenu';
 import SignupForm from './SignupForm';
+import LoginForm from './LoginForm';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -60,13 +61,14 @@ const Topbar = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
-  const { actualExercise, choiceMenu, resetExercise } = useContext(Context);
+  const { actualExercise, choiceMenu, 
+    resetExercise, openSignupModal, setOpenSignupModal, 
+    openLoginModal, setOpenLoginModal} = useContext(Context);
 
   const titleClassName = actualExercise ? classes.exerciseName : classes.menuChoice; 
 
   const handleAuth = (event) => {
-    setOpenModal(true);
+    setOpenSignupModal(true);
     setAnchorEl(event.currentTarget);
   };
 
@@ -74,11 +76,16 @@ const Topbar = () => {
     setOpenDrawer(true);
   };
 
-  const handleCloseModal = () => {
-    setOpenModal(false);
+  const handleCloseSignupModal = () => {
+    setOpenSignupModal(false);
+  };
+
+  const handleCloseLoginModal = () => {
+    setOpenLoginModal(false);
   };
 
   const renderSignup = (<div><SignupForm /></div>);
+  const renderLogin = (<div><LoginForm /></div>);
   
   return (
     <div className={classes.root}>
@@ -128,11 +135,18 @@ const Topbar = () => {
         </Toolbar>
       </AppBar>
       <Modal 
-        open={openModal} 
-        onClose={handleCloseModal} 
+        open={openSignupModal} 
+        onClose={handleCloseSignupModal} 
         aria-labelledby="modal-title"
         aria-describedby="modal-description">
         {renderSignup}
+      </Modal>
+      <Modal 
+        open={openLoginModal} 
+        onClose={handleCloseLoginModal} 
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description">
+        {renderLogin}
       </Modal>
       <LeftMenu open={openDrawer} setOpen={setOpenDrawer} />
     </div>
