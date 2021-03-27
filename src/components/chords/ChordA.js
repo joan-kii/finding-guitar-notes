@@ -84,7 +84,7 @@ const ChordA = () => {
       <div>
         <Fretboard fretboard={chordAFretboard} />
         <Snackbar open={showSuccessMessage} autoHideDuration={2000} onClose={closeMessage}>
-            <Alert severity='success'>That's right!</Alert>
+          <Alert severity='success'>That's right!</Alert>
         </Snackbar>
         <Snackbar open={showFailMessage} autoHideDuration={2000} onClose={closeMessage}>
           <Alert severity='error'>Try again</Alert>
