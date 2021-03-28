@@ -12,7 +12,7 @@ const ContextProvider = (props) => {
   const [reset, setReset] = useState(true);
   const [actualExercise, setActualExercise] = useState('');
   const [choiceMenu, setChoiceMenu] = useState('');
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState(null);
   const [openSignupModal, setOpenSignupModal] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -99,20 +99,22 @@ const ContextProvider = (props) => {
   const [string1Exercise, setString1Exercise] = useState({
     'E': {completed: false},
     'F': {completed: false},
-    'F#/Gb': {completed: false},
+    'F#|Gb': {completed: false},
     'G': {completed: false},
-    'G#/Ab': {completed: false},
+    'G#|Ab': {completed: false},
     'A': {completed: false},
-    'A#/Bb': {completed: false},
+    'A#|Bb': {completed: false},
     'B': {completed: false},
     'C': {completed: false},
-    'C#/Db': {completed: false},
+    'C#|Db': {completed: false},
     'D': {completed: false},
-    'D#/Eb': {completed: false},
+    'D#|Eb': {completed: false},
     'e': {completed: false},
     completed: false,
     title: 'String 1',
   });
+  if (currentUser) db.collection('exercises').doc('string1Exercise').set(string1Exercise)
+
   const [string2Exercise, setString2Exercise] = useState({
     'B': {completed: false},
     'C': {completed: false},

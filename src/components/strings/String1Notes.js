@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Context } from '../../context/Context';
+import { db } from '../../firebase';
 import InfozoneStringNotes from '../InfozoneStringNotes';
 import Fretboard from '../Fretboard';
 import { createFretboard } from '../../modules/createFretboard';
@@ -14,7 +15,7 @@ const Alert = (props) => {
 
 const String1Notes = () => {
 
-  const { string1Exercise, setString1Exercise, setActualExercise } = useContext(Context);
+  const { string1Exercise, setString1Exercise, setActualExercise, currentUser } = useContext(Context);
   const notesString1 = Object.keys(string1Exercise);
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -52,6 +53,7 @@ const String1Notes = () => {
       anchorEl.setAttribute('data-before', note);
       setString1Exercise((prevState) => {
         prevState[noteSelected].completed = true;
+        if (currentUser) db.collection('exercises').doc('string1Exercise').update({...prevState})
         return ({...prevState});
       });
       setRightNotes(rightNotes + 1);

@@ -68,7 +68,7 @@ const Topbar = () => {
     resetExercise, openSignupModal, setOpenSignupModal, 
     openLoginModal, setOpenLoginModal} = useContext(Context);
   
-  const { currentUser, logout } = useAuth();
+  const { currentUser, setCurrentUser, logout } = useAuth();
 
   const titleClassName = actualExercise ? classes.exerciseName : classes.menuChoice; 
 
@@ -91,6 +91,7 @@ const Topbar = () => {
 
   async function handleLogout() {
       await logout();
+      setCurrentUser(null);
   };
 
   const renderSignup = (<div><SignupForm /></div>);
