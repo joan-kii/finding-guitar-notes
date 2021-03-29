@@ -57,7 +57,7 @@ const InfozoneStringNotes = ({ notesString, string }) => {
   
   const { actualExercise } = useContext(Context);
   const classes = useStyles();
-
+  
   return (
     <div className={classes.root}>
       <Container className={classes.container}>

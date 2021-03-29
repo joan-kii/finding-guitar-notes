@@ -15,7 +15,7 @@ const Alert = (props) => {
 
 const String1Notes = () => {
 
-  const { string1Exercise, setString1Exercise, setActualExercise, currentUser } = useContext(Context);
+  const { string1Exercise, setString1Exercise,  setActualExercise, currentUser } = useContext(Context);
   const notesString1 = Object.keys(string1Exercise);
 
   const [anchorEl, setAnchorEl] = useState(null);

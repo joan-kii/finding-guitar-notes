@@ -26,6 +26,7 @@ const ContextProvider = (props) => {
   };
 
   const logout = () => {
+    setCurrentUser(null);
     return auth.signOut();
   };
 
@@ -113,8 +114,13 @@ const ContextProvider = (props) => {
     completed: false,
     title: 'String 1',
   });
-  if (currentUser) db.collection('exercises').doc('string1Exercise').set(string1Exercise)
-
+  const [test, setTest] = useState();
+  useEffect(() => {
+    db.collection('exercises').get().then((snapshot) => {
+      setTest(snapshot.docs);
+    })
+  }, [])
+  console.log(test)
   const [string2Exercise, setString2Exercise] = useState({
     'B': {completed: false},
     'C': {completed: false},
