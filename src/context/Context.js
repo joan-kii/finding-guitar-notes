@@ -26,7 +26,6 @@ const ContextProvider = (props) => {
   };
 
   const logout = () => {
-    setCurrentUser(null);
     return auth.signOut();
   };
 
@@ -40,14 +39,15 @@ const ContextProvider = (props) => {
     return auth.signInWithPopup(provider);
   };
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+  /* useEffect(() => {
+    const unsubscribe =  */auth.onAuthStateChanged(user => {
       setCurrentUser(user);
       setLoading(false);
+      console.log(user)
     });
 
-    return unsubscribe;
-  }, [])
+    /* return unsubscribe;
+  }, []) */
 
   const resetExercise = (exercise) => {
     setReset(false);
@@ -114,13 +114,6 @@ const ContextProvider = (props) => {
     completed: false,
     title: 'String 1',
   });
-  const [test, setTest] = useState();
-  useEffect(() => {
-    db.collection('exercises').get().then((snapshot) => {
-      setTest(snapshot.docs);
-    })
-  }, [])
-  console.log(test)
   const [string2Exercise, setString2Exercise] = useState({
     'B': {completed: false},
     'C': {completed: false},
