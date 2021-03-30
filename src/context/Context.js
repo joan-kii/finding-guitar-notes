@@ -39,15 +39,10 @@ const ContextProvider = (props) => {
     return auth.signInWithPopup(provider);
   };
 
-  /* useEffect(() => {
-    const unsubscribe =  */auth.onAuthStateChanged(user => {
+ auth.onAuthStateChanged(user => {
       setCurrentUser(user);
       setLoading(false);
-      console.log(user)
     });
-
-    /* return unsubscribe;
-  }, []) */
 
   const resetExercise = (exercise) => {
     setReset(false);
@@ -97,7 +92,7 @@ const ContextProvider = (props) => {
     }
   };
 
-  const [string1Exercise, setString1Exercise] = useState({
+  /* const [string1Exercise, setString1Exercise] = useState({
     'E': {completed: false},
     'F': {completed: false},
     'F#|Gb': {completed: false},
@@ -113,71 +108,75 @@ const ContextProvider = (props) => {
     'e': {completed: false},
     completed: false,
     title: 'String 1',
-  });
+  }); */
+  const [string1Exercise, setString1Exercise] = useState(
+    db.collection('exercises').doc('string1Exercise').get()
+  );
+  console.log(string1Exercise)
   const [string2Exercise, setString2Exercise] = useState({
     'B': {completed: false},
     'C': {completed: false},
-    'C#/Db': {completed: false},
+    'C#|Db': {completed: false},
     'D': {completed: false},
-    'D#/Eb': {completed: false},
+    'D#|Eb': {completed: false},
     'E': {completed: false},
     'F': {completed: false},
-    'F#/Gb': {completed: false},
+    'F#|Gb': {completed: false},
     'G': {completed: false},
-    'G#/Ab': {completed: false},
+    'G#|Ab': {completed: false},
     'A': {completed: false},
-    'A#/Bb': {completed: false},
+    'A#|Bb': {completed: false},
     'b': {completed: false},
     completed: false,
     title: 'String 2'
   });
   const [string3Exercise, setString3Exercise] = useState({
     'G': {completed: false},
-    'G#/Ab': {completed: false},
+    'G#|Ab': {completed: false},
     'A': {completed: false},
-    'A#/Bb': {completed: false},
+    'A#|Bb': {completed: false},
     'B': {completed: false},
     'C': {completed: false},
-    'C#/Db': {completed: false},
+    'C#|Db': {completed: false},
     'D': {completed: false},
     'D#/Eb': {completed: false},
     'E': {completed: false},
     'F': {completed: false},
-    'F#/Gb': {completed: false},
+    'F#|Gb': {completed: false},
     'g': {completed: false},
     completed: false,
     title: 'String 3'
   });
   const [string4Exercise, setString4Exercise] = useState({
     'D': {completed: false},
-    'D#/Eb': {completed: false},
+    'D#|Eb': {completed: false},
     'E': {completed: false},
     'F': {completed: false},
-    'F#/Gb': {completed: false},
+    'F#|Gb': {completed: false},
     'G': {completed: false},
-    'G#/Ab': {completed: false},
+    'G#|Ab': {completed: false},
     'A': {completed: false},
-    'A#/Bb': {completed: false},
+    'A#|Bb': {completed: false},
     'B': {completed: false},
     'C': {completed: false},
-    'C#/Db': {completed: false},
+    'C#|Db': {completed: false},
     'd': {completed: false},
     completed: false,
     title: 'String 4'
   });
   const [string5Exercise, setString5Exercise] = useState({
     'A': {completed: false},
-    'A#/Bb': {completed: false},
+    'A#|Bb': {completed: false},
     'B': {completed: false},
     'C': {completed: false},
-    'C#/Db': {completed: false},
+    'C#|Db': {completed: false},
     'D': {completed: false},
-    'D#/Eb': {completed: false},
+    'D#|Eb': {completed: false},
     'E': {completed: false},
     'F': {completed: false},
-    'F#/Gb': {completed: false},
+    'F#|Gb': {completed: false},
     'G': {completed: false},
-    'G#/Ab': {completed: false},
+    'G#|Ab': {completed: false},
     'a': {completed: false},
     completed: false,
     title: 'String 5'
@@ -185,16 +184,16 @@ const ContextProvider = (props) => {
   const [string6Exercise, setString6Exercise] = useState({
     'E': {completed: false},
     'F': {completed: false},
-    'F#/Gb': {completed: false},
+    'F#|Gb': {completed: false},
     'G': {completed: false},
-    'G#/Ab': {completed: false},
+    'G#|Ab': {completed: false},
     'A': {completed: false},
-    'A#/Bb': {completed: false},
+    'A#|Bb': {completed: false},
     'B': {completed: false},
     'C': {completed: false},
-    'C#/Db': {completed: false},
+    'C#|Db': {completed: false},
     'D': {completed: false},
-    'D#/Eb': {completed: false},
+    'D#|Eb': {completed: false},
     'e': {completed: false},
     completed: false,
     title: 'String 6'
@@ -209,6 +208,17 @@ const ContextProvider = (props) => {
     'F': {title: 'Chord F', completed: false},
     'G': {title: 'Chord G', completed: false},
   });
+
+// Create exercises in firestore
+  /* useEffect(() => {
+    db.collection('exercises').doc('string1Exercise').set(string1Exercise);
+    db.collection('exercises').doc('string2Exercise').set(string2Exercise);
+    db.collection('exercises').doc('string3Exercise').set(string3Exercise);
+    db.collection('exercises').doc('string4Exercise').set(string4Exercise);
+    db.collection('exercises').doc('string5Exercise').set(string5Exercise);
+    db.collection('exercises').doc('string6Exercise').set(string6Exercise);
+    db.collection('exercises').doc('exercises').set(exercises);
+  }, []) */
 
   const value = {
     exercises, setExercises, 
