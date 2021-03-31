@@ -20,9 +20,9 @@ const ChordB = () => {
   const [showFailMessage, setShowFailMessage] = useState(false);
   const { exercises, setExercises, setActualExercise, reset } = useContext(Context);
 
-  useEffect(() => {
+  if (exercises) {
     setActualExercise(exercises[chord]);
-  });
+  }
 
   useEffect(() => {
     setRightNotes([0, 0, 0, 0, 0]);

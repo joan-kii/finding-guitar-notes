@@ -23,9 +23,9 @@ const String2Notes = () => {
   const [rightNotes, setRightNotes] = useState(0);
 
 
-  useEffect(() => {
+  if (string2Exercise) {
     setActualExercise(string2Exercise);
-  });
+  }
 
   const closeMessage = () => {
     setShowSuccessMessage(false);

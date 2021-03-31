@@ -22,9 +22,9 @@ const String1Notes = () => {
   const [showFailMessage, setShowFailMessage] = useState(false);
   const [rightNotes, setRightNotes] = useState(0);
 
-  useEffect(() => {
+  if (string1Exercise) {
     setActualExercise(string1Exercise);
-  });
+  }
 
   const closeMessage = () => {
     setShowSuccessMessage(false);
@@ -133,9 +133,10 @@ const String1Notes = () => {
           <Alert severity='error'>Try again</Alert>
         </Snackbar>
       </div>
-      <InfozoneStringNotes 
-        notesString={notesString1}
-        string={string1Exercise} />
+      {string1Exercise && 
+        <InfozoneStringNotes 
+          notesString={notesString1}
+          string={string1Exercise} />}
     </div>
   );
 }; 

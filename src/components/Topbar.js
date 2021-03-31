@@ -66,11 +66,11 @@ const Topbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const { actualExercise, choiceMenu, 
     resetExercise, openSignupModal, setOpenSignupModal, 
-    openLoginModal, setOpenLoginModal} = useContext(Context);
+    openLoginModal, setOpenLoginModal } = useContext(Context);
   
   const { currentUser, logout } = useAuth();
-
-  const titleClassName = actualExercise ? classes.exerciseName : classes.menuChoice; 
+  const titleClassName = actualExercise ? classes.exerciseName : classes.menuChoice;
+   
 
   const handleAuth = (event) => {
     setOpenSignupModal(true);

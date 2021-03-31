@@ -22,10 +22,9 @@ const String4Notes = () => {
   const [showFailMessage, setShowFailMessage] = useState(false);
   const [rightNotes, setRightNotes] = useState(0);
 
-
-  useEffect(() => {
+  if (string4Exercise) {
     setActualExercise(string4Exercise);
-  });
+  }
 
   const closeMessage = () => {
     setShowSuccessMessage(false);

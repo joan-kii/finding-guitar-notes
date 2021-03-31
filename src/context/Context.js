@@ -92,7 +92,7 @@ const ContextProvider = (props) => {
     }
   };
 
-  // Get exercises
+  // Get exercises from Firestore
 
   const [exercises, setExercises] = useState();
   const [string1Exercise, setString1Exercise] = useState();
@@ -104,7 +104,7 @@ const ContextProvider = (props) => {
 
   useEffect(() => {
     if (!currentUser) {
-      db.collection('exercises').get().then((snapshot) => {
+      const unsubscribe = db.collection('exercises').get().then((snapshot) => {
         snapshot.forEach((exercise) => {
           if (exercise.id === 'exercises') {
             setExercises(exercise.data())
@@ -122,7 +122,8 @@ const ContextProvider = (props) => {
             setString6Exercise(exercise.data())
           }
         });
-      })
+      }).catch((err) => console.log(err.message))
+      return unsubscribe;
     }
   }, [])
 
@@ -252,9 +253,9 @@ const ContextProvider = (props) => {
   }, []) */
 
   const value = {
-    exercises, setExercises, 
     actualExercise, setActualExercise, 
     resetExercise, choiceMenu, setChoiceMenu, 
+    exercises, setExercises, 
     string1Exercise, setString1Exercise,
     string2Exercise, setString2Exercise,
     string3Exercise, setString3Exercise,
