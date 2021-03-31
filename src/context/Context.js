@@ -92,6 +92,40 @@ const ContextProvider = (props) => {
     }
   };
 
+  // Get exercises
+
+  const [exercises, setExercises] = useState();
+  const [string1Exercise, setString1Exercise] = useState();
+  const [string2Exercise, setString2Exercise] = useState();
+  const [string3Exercise, setString3Exercise] = useState();
+  const [string4Exercise, setString4Exercise] = useState();
+  const [string5Exercise, setString5Exercise] = useState();
+  const [string6Exercise, setString6Exercise] = useState();
+
+  useEffect(() => {
+    if (!currentUser) {
+      db.collection('exercises').get().then((snapshot) => {
+        snapshot.forEach((exercise) => {
+          if (exercise.id === 'exercises') {
+            setExercises(exercise.data())
+          } else if (exercise.id === 'string1Exercise') {
+            setString1Exercise(exercise.data())
+          } else if (exercise.id === 'string2Exercise') {
+            setString2Exercise(exercise.data())
+          } else if (exercise.id === 'string3Exercise') {
+            setString3Exercise(exercise.data())
+          } else if (exercise.id === 'string4Exercise') {
+            setString4Exercise(exercise.data())
+          } else if (exercise.id === 'string5Exercise') {
+            setString5Exercise(exercise.data())
+          } else if (exercise.id === 'string6Exercise') {
+            setString6Exercise(exercise.data())
+          }
+        });
+      })
+    }
+  }, [])
+
   /* const [string1Exercise, setString1Exercise] = useState({
     'E': {completed: false},
     'F': {completed: false},
@@ -108,11 +142,8 @@ const ContextProvider = (props) => {
     'e': {completed: false},
     completed: false,
     title: 'String 1',
-  }); */
-  const [string1Exercise, setString1Exercise] = useState(
-    db.collection('exercises').doc('string1Exercise').get()
-  );
-  console.log(string1Exercise)
+  }); 
+  
   const [string2Exercise, setString2Exercise] = useState({
     'B': {completed: false},
     'C': {completed: false},
@@ -207,7 +238,7 @@ const ContextProvider = (props) => {
     'E': {title: 'Chord E', completed: false},
     'F': {title: 'Chord F', completed: false},
     'G': {title: 'Chord G', completed: false},
-  });
+  });*/
 
 // Create exercises in firestore
   /* useEffect(() => {

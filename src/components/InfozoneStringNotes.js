@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-around',
   },
   chip: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(0.5)
   },
 }));
 

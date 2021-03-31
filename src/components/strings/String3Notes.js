@@ -15,7 +15,7 @@ const Alert = (props) => {
 const String3Notes = () => {
 
   const { string3Exercise, setString3Exercise, setActualExercise } = useContext(Context);
-  const notesString3 = Object.keys(string3Exercise);
+  const notesString3 = ['G', 'G#|Ab', 'A', 'A#|Bb', 'B', 'C', 'C#|Db', 'D', 'D#|Eb', 'E', 'F', 'F#|Gb', 'g'];
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
