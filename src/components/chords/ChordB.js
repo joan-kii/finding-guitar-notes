@@ -4,14 +4,26 @@ import { Context } from '../../context/Context';
 import InfozoneChordNotes from '../InfozoneChordNotes';
 import Fretboard from '../Fretboard';
 import { createFretboard } from '../../modules/createFretboard';
+import { makeStyles } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer +1,
+    color: 'white',
+  },
+}));
 
 const Alert = (props) => {
   return <MuiAlert elevation={6} variant='filled' {...props} />
 };
 
 const ChordB = () => {
+
+  const classes = useStyles();
 
   const chord = 'B';
   const fretsChordB = ['2', '4', '4', '4', '2'];
@@ -98,6 +110,14 @@ const ChordB = () => {
         notesChord={fretsChordB}
         chord={chord} 
         rightNotes={rightNotes} />
+      <Backdrop 
+        className={classes.backdrop}
+        open={!exercises} 
+        close={exercises} >
+        <CircularProgress 
+          color='inherit'
+          thickness='6' />
+      </Backdrop>
     </div>
   );
 }; 

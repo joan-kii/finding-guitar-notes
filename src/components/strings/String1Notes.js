@@ -4,16 +4,28 @@ import { Context } from '../../context/Context';
 import Fretboard from '../Fretboard';
 import InfozoneStringNotes from '../InfozoneStringNotes';
 import { createFretboard } from '../../modules/createFretboard';
+import { makeStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer +1,
+    color: 'white',
+  },
+}));
 
 const Alert = (props) => {
   return <MuiAlert elevation={6} variant='filled' {...props} />
 };
 
 const String1Notes = () => {
+
+  const classes = useStyles();
 
   const { string1Exercise, setString1Exercise, setActualExercise, currentUser } = useContext(Context);
   const notesString1 = ['E', 'F', 'F#|Gb', 'G', 'G#|Ab', 'A', 'A#|Bb', 'B', 'C', 'C#|Db', 'D', 'D#|Eb', 'e'];
@@ -140,10 +152,17 @@ const String1Notes = () => {
           <Alert severity='error'>Try again</Alert>
         </Snackbar>
       </div>
-      {string1Exercise && 
-        <InfozoneStringNotes 
-          notesString={notesString1}
-          string={string1Exercise} />}
+      <InfozoneStringNotes 
+        notesString={notesString1}
+        string={string1Exercise} />
+      <Backdrop 
+        className={classes.backdrop}
+        open={!string1Exercise} 
+        close={string1Exercise} >
+        <CircularProgress 
+          color='inherit'
+          thickness='6' />
+      </Backdrop>
     </div>
   );
 }; 

@@ -4,16 +4,28 @@ import { Context } from '../../context/Context';
 import Fretboard from '../Fretboard';
 import InfozoneStringNotes from '../InfozoneStringNotes';
 import { createFretboard } from '../../modules/createFretboard';
+import { makeStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: theme.zIndex.drawer +1,
+    color: 'white',
+  },
+}));
 
 const Alert = (props) => {
   return <MuiAlert elevation={6} variant='filled' {...props} />
 };
 
 const String2Notes = () => {
+
+  const classes = useStyles();
 
   const { string2Exercise, setString2Exercise, setActualExercise, currentUser } = useContext(Context);
   const notesString2 = ['B', 'C', 'C#|Db', 'D', 'D#|Eb', 'E', 'F', 'F#|Gb', 'G', 'G#|Ab', 'A', 'A#|Bb', 'b'];
@@ -136,6 +148,14 @@ const String2Notes = () => {
       <InfozoneStringNotes 
         notesString={notesString2}
         string= {string2Exercise} />
+      <Backdrop 
+        className={classes.backdrop}
+        open={!string2Exercise} 
+        close={string2Exercise} >
+      <CircularProgress 
+        color='inherit'
+        thickness='6' />
+      </Backdrop>
     </div>
   );
 }; 

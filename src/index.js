@@ -11,3 +11,12 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+
+/* TO-DO
+- Refactoring
+- Animations (framer.io)
+- Alert log in and log out
+- Alert error log in or sign in
+- Render right notes on fretboard when connect with firestore
+*/

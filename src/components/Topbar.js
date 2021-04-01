@@ -62,7 +62,6 @@ const useStyles = makeStyles((theme) => ({
 const Topbar = () => {
 
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = useState(null);
   const [openDrawer, setOpenDrawer] = useState(false);
   const { actualExercise, choiceMenu, 
     resetExercise, openSignupModal, setOpenSignupModal, 
@@ -74,7 +73,6 @@ const Topbar = () => {
 
   const handleAuth = (event) => {
     setOpenSignupModal(true);
-    setAnchorEl(event.currentTarget);
   };
 
   const openMenu = () => {
