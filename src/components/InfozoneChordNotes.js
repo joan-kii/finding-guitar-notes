@@ -60,34 +60,35 @@ const InfozoneChordNotes = ({ notesChord, chord, rightNotes }) => {
 
   return (
     <div className={classes.root}>
-      <Container className={classes.container}>
-        <Paper className={classes.paper}>
-          <Typography className={classes.title}>
-            {actualExercise ? `Find the notes of Major ${actualExercise.title}` : ''}
-          </Typography>
-          <MuiThemeProvider theme={theme}>
-            <Container className={classes.results}>
-              {notesChord.map((fret, index) => {
-                return <Chip 
-                  key={index}
+      {exercises && 
+        <Container className={classes.container}>
+          <Paper className={classes.paper}>
+            <Typography className={classes.title}>
+              {actualExercise ? `Find the notes of Major ${actualExercise.title}` : ''}
+            </Typography>
+            <MuiThemeProvider theme={theme}>
+              <Container className={classes.results}>
+                {notesChord.map((fret, index) => {
+                  return <Chip 
+                    key={index}
+                    className={classes.chip} 
+                    size='small' 
+                    label={`String ${index + 1}`} 
+                    color={rightNotes[index] ? 'primary' : 'default'}
+                    icon={rightNotes[index] ? <DoneIcon /> : null} />
+                })}
+              </Container>
+              <Container className={classes.infoChord}>
+                <Chip 
                   className={classes.chip} 
-                  size='small' 
-                  label={`String ${index + 1}`} 
-                  color={rightNotes[index] ? 'primary' : 'default'}
-                  icon={rightNotes[index] ? <DoneIcon /> : null} />
-              })}
-            </Container>
-            <Container className={classes.infoChord}>
-              <Chip 
-                className={classes.chip} 
-                size='medium' 
-                label={`Chord ${chord}`} 
-                color={exercises[chord].completed ? 'primary' : 'default'}
-                icon={exercises[chord].completed ? <DoneIcon /> : null} />
-            </Container>
-          </MuiThemeProvider>
-        </Paper>
-      </Container>
+                  size='medium' 
+                  label={`Chord ${chord}`} 
+                  color={exercises[chord].completed ? 'primary' : 'default'}
+                  icon={exercises[chord].completed ? <DoneIcon /> : null} />
+              </Container>
+            </MuiThemeProvider>
+          </Paper>
+        </Container>}
     </div>
   );
 }; 

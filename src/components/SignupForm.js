@@ -86,7 +86,7 @@ const SignupForm = () => {
       setLoading(true);
       await googleSignup();
     } catch {
-      console.error(error.message);
+      console.error(error);
     }
     setLoading(false);
     setOpenSignupModal(false);
@@ -98,7 +98,8 @@ const SignupForm = () => {
       setLoading(true);
       await githubSignup();
     } catch {
-      console.error(error.message);
+      console.error(error);
+      setError('Unable to Sign Up with Github')
     }
     setLoading(false);
     setOpenSignupModal(false);

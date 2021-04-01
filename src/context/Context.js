@@ -18,11 +18,31 @@ const ContextProvider = (props) => {
   const [loading, setLoading] = useState(true);
 
   const signup = (email, password) => {
-    return auth.createUserWithEmailAndPassword(email, password);
+    return auth.createUserWithEmailAndPassword(email, password).then((cred) => {
+      return db.collection('users').doc(cred.user.uid).set({
+        string1Exercise: {...string1Exercise},
+        string2Exercise: {...string2Exercise},
+        string3Exercise: {...string3Exercise},
+        string4Exercise: {...string4Exercise},
+        string5Exercise: {...string5Exercise},
+        string6Exercise: {...string6Exercise},
+        exercises: {...exercises},
+      })
+    });
   };
 
   const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password);
+    return auth.signInWithEmailAndPassword(email, password).then((cred) => {
+      return db.collection('users').doc(cred.user.uid).get().then((track) => {
+        setString1Exercise(track.data().string1Exercise);
+        setString2Exercise(track.data().string2Exercise);
+        setString3Exercise(track.data().string3Exercise);
+        setString4Exercise(track.data().string4Exercise);
+        setString5Exercise(track.data().string5Exercise);
+        setString6Exercise(track.data().string6Exercise);
+        setExercises(track.data().exercises);
+      });
+    });
   };
 
   const logout = () => {
@@ -31,12 +51,32 @@ const ContextProvider = (props) => {
 
   const googleSignup = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    return auth.signInWithPopup(provider);
+    return auth.signInWithPopup(provider).then((cred) => {
+      return db.collection('users').doc(cred.user.uid).set({
+        string1Exercise: {...string1Exercise},
+        string2Exercise: {...string2Exercise},
+        string3Exercise: {...string3Exercise},
+        string4Exercise: {...string4Exercise},
+        string5Exercise: {...string5Exercise},
+        string6Exercise: {...string6Exercise},
+        exercises: {...exercises},
+      })
+    });
   };
 
   const githubSignup = () => {
     const provider = new firebase.auth.GithubAuthProvider();
-    return auth.signInWithPopup(provider);
+    return auth.signInWithPopup(provider).then((cred) => {
+      return db.collection('users').doc(cred.user.uid).set({
+        string1Exercise: {...string1Exercise},
+        string2Exercise: {...string2Exercise},
+        string3Exercise: {...string3Exercise},
+        string4Exercise: {...string4Exercise},
+        string5Exercise: {...string5Exercise},
+        string6Exercise: {...string6Exercise},
+        exercises: {...exercises},
+      })
+    });
   };
 
  auth.onAuthStateChanged(user => {
@@ -171,7 +211,7 @@ const ContextProvider = (props) => {
     'C': {completed: false},
     'C#|Db': {completed: false},
     'D': {completed: false},
-    'D#/Eb': {completed: false},
+    'D#|Eb': {completed: false},
     'E': {completed: false},
     'F': {completed: false},
     'F#|Gb': {completed: false},
