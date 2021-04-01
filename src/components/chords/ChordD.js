@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { db } from '../../firebase';
 import { Context } from '../../context/Context';
 import Fretboard from '../Fretboard';
 import InfozoneChordNotes from '../InfozoneChordNotes';
@@ -18,7 +19,7 @@ const ChordD = () => {
   const [rightNotes, setRightNotes] = useState([0, 0, 0, 0]);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [showFailMessage, setShowFailMessage] = useState(false);
-  const { exercises, setExercises, setActualExercise, reset } = useContext(Context);
+  const { exercises, setExercises, setActualExercise, reset, currentUser } = useContext(Context);
   
   if (exercises) {
     setActualExercise(exercises[chord]);
@@ -42,6 +43,9 @@ const ChordD = () => {
       if (!rightNotes.includes(0)) {
         setExercises((prevState) => {
           prevState[chord].completed = true;
+          if (currentUser) db.collection('users').doc(currentUser.uid).update({
+            exercises: {...prevState}
+          })
           return ({...prevState});
         });
       }

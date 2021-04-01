@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { db } from '../../firebase';
 import { Context } from '../../context/Context';
 import InfozoneStringNotes from '../InfozoneStringNotes';
 import Fretboard from '../Fretboard';
@@ -14,7 +15,7 @@ const Alert = (props) => {
 
 const String6Notes = () => {
 
-  const { string6Exercise, setString6Exercise, setActualExercise } = useContext(Context);
+  const { string6Exercise, setString6Exercise, setActualExercise, currentUser } = useContext(Context);
   const notesString6 = ['E', 'F', 'F#|Gb', 'G', 'G#|Ab', 'A', 'A#|Bb', 'B', 'C', 'C#|Db', 'D', 'D#|Eb', 'e'];
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -39,10 +40,13 @@ const String6Notes = () => {
     if (rightNotes === 13) {
       setString6Exercise((prevState) => {
         prevState.completed = true;
+        if (currentUser) db.collection('users').doc(currentUser.uid).update({
+          string6Exercise: {...prevState}
+        })
         return ({...prevState});
       })
     }
-  }, [rightNotes, setString6Exercise]);
+  }, [rightNotes, setString6Exercise, currentUser]);
 
   const handleClose = (anchorEl, noteSelected) => {
     
@@ -53,6 +57,9 @@ const String6Notes = () => {
       anchorEl.setAttribute('data-before', note);
       setString6Exercise((prevState) => {
         prevState[noteSelected].completed = true;
+        if (currentUser) db.collection('users').doc(currentUser.uid).update({
+          string6Exercise: {...prevState}
+        })
         return ({...prevState});
       });
       setRightNotes(rightNotes + 1);
