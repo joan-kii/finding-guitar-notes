@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import { motion } from 'framer-motion';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,7 +62,11 @@ const Chords = () => {
         </Container>
       </div>
       <Container className={classes.grid}>
-        <Grid className={classes.row}>
+        <Grid 
+          className={classes.row}
+          component={motion.div}
+          initial={{ x: -200 }}
+          animate={{ x: 0 }}>
           <Link to='/chord-a'>
             <Button className={classes.button}>
               Chord A
@@ -73,7 +78,11 @@ const Chords = () => {
             </Button>
           </Link>
         </Grid>
-        <Grid className={classes.row}>
+        <Grid 
+          className={classes.row}
+          component={motion.div}
+          initial={{ x: 200 }}
+          animate={{ x: 0 }}>
           <Link to='/chord-c'>
             <Button className={classes.button}>
               Chord C
@@ -85,7 +94,11 @@ const Chords = () => {
             </Button>
           </Link>
         </Grid>
-        <Grid className={classes.row}>
+        <Grid 
+          className={classes.row}
+          component={motion.div}
+          initial={{ x: -200 }}
+          animate={{ x: 0 }}>
           <Link to='/chord-e'>
             <Button className={classes.button}>
               Chord E
@@ -97,7 +110,11 @@ const Chords = () => {
             </Button>
           </Link>
         </Grid>
-        <Grid className={classes.row}>
+        <Grid 
+          className={classes.row}
+          component={motion.div}
+          initial={{ y: 200 }}
+          animate={{ y: 0 }}>
           <Link to='/chord-g'>
             <Button className={classes.button}>
               Chord G

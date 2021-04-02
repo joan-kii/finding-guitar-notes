@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import NoteImage from '../assets/note.jpg';
 import ChordImage from '../assets/chord.jpg';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 // Buttons Selection
 
@@ -137,10 +138,17 @@ const SelectGame = () => {
           </Typography>
         </ Container>
       </div>
-      <Container className={classes.buttons}>
+      <Container className={classes.buttons} >
         {images.map((image) => (
           <Link to={image.path} key={image.title}>
             <ButtonBase 
+              component={motion.div}
+              initial={{ scale: 0 }}
+              animate={{ rotate: 360, scale: 1 }}
+              transition={{ 
+                type: 'spring',
+                stiffness: 260,
+                damping: 20 }}
               focusRipple
               className={classes.image}
               focusVisibleClassName={classes.focusVisible}

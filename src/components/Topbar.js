@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Context, useAuth } from '../context/Context';
 import LeftMenu from './LeftMenu';
 import SignupForm from './SignupForm';
@@ -15,6 +15,8 @@ import Button from '@material-ui/core/Button';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Modal from '@material-ui/core/Modal';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import { motion } from 'framer-motion';
 
 const useStyles = makeStyles((theme) => ({
@@ -59,19 +61,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const Alert = (props) => {
+  return <MuiAlert elevation={6} variant='filled' {...props} />
+};
+
 const Topbar = () => {
 
   const classes = useStyles();
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [showLoginAlert, setShowLoginAlert] = useState(false);
+  const [showLogoutAlert, setShowLogoutAlert] = useState(false);
   const { actualExercise, choiceMenu, 
     resetExercise, openSignupModal, setOpenSignupModal, 
     openLoginModal, setOpenLoginModal } = useContext(Context);
   
-  const { currentUser, logout } = useAuth();
+  const { currentUser, logout, signinError, setSigninError } = useAuth();
   const titleClassName = actualExercise ? classes.exerciseName : classes.menuChoice;
-   
 
-  const handleAuth = (event) => {
+  useEffect(() => {
+    if (currentUser) setShowLoginAlert(true)
+  }, [currentUser])
+   
+  const handleCloseAlert = () => {
+    setShowLoginAlert(false);
+    setShowLogoutAlert(false);
+  };
+
+  const handleAuth = () => {
     setOpenSignupModal(true);
   };
 
@@ -88,7 +104,9 @@ const Topbar = () => {
   };
 
   async function handleLogout() {
-      await logout();
+      await logout().then(() => {
+        setShowLogoutAlert(true);
+      });
   };
 
   const renderSignup = (<div><SignupForm /></div>);
@@ -164,6 +182,30 @@ const Topbar = () => {
         aria-describedby="modal-description">
         {renderLogin}
       </Modal>
+      <Snackbar 
+        open={showLoginAlert} 
+        autoHideDuration={4000}
+        onClose={handleCloseAlert}>
+        <Alert severity='success'>
+          You are logged in!
+        </Alert>
+      </Snackbar>
+      <Snackbar 
+        open={showLogoutAlert} 
+        autoHideDuration={4000}
+        onClose={handleCloseAlert}>
+        <Alert severity='success'>
+          You are logged out!
+        </Alert>
+      </Snackbar>
+      <Snackbar 
+        open={signinError} 
+        autoHideDuration={4000}
+        onClose={() => setSigninError(false)}>
+        <Alert severity='error'>
+          Unable to Sign In!
+        </Alert>
+      </Snackbar>
       <LeftMenu open={openDrawer} setOpen={setOpenDrawer} />
     </div>
   );

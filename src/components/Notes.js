@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import { motion } from 'framer-motion';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,7 +62,11 @@ const Notes = () => {
         </Container>
       </div>
       <Container className={classes.grid}>
-        <Grid className={classes.row}>
+        <Grid 
+          className={classes.row}
+          component={motion.div}
+          initial={{ x: -200 }}
+          animate={{ x: 0 }}>
           <Link to='/notes-string-1'>
             <Button className={classes.button}>
               String 1
@@ -73,7 +78,11 @@ const Notes = () => {
             </Button>
           </Link>
         </Grid>
-        <Grid className={classes.row}>
+        <Grid 
+          className={classes.row}
+          component={motion.div}
+          initial={{ x: 200 }}
+          animate={{ x: 0 }}>
           <Link to='/notes-string-3'>
             <Button className={classes.button}>
               String 3
@@ -85,7 +94,11 @@ const Notes = () => {
             </Button>
           </Link>
         </Grid>
-        <Grid className={classes.row}>
+        <Grid 
+          className={classes.row}
+          component={motion.div}
+          initial={{ x: -200 }}
+          animate={{ x: 0 }}>
           <Link to='/notes-string-5'>
             <Button className={classes.button}>
               String 5
