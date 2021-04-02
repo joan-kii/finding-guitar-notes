@@ -11,21 +11,21 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
 const stringPaths = {
-  'String 1': '/notes-string-1',
-  'String 2': '/notes-string-2',
-  'String 3': '/notes-string-3',
-  'String 4': '/notes-string-4',
-  'String 5': '/notes-string-5',
-  'String 6': '/notes-string-6',
+  'String 1': '/finding-guitar-notes/notes-string-1',
+  'String 2': '/finding-guitar-notes/notes-string-2',
+  'String 3': '/finding-guitar-notes/notes-string-3',
+  'String 4': '/finding-guitar-notes/notes-string-4',
+  'String 5': '/finding-guitar-notes/notes-string-5',
+  'String 6': '/finding-guitar-notes/notes-string-6',
 };
 const chordPaths = {
-  'Chord A': '/chord-a',
-  'Chord B': '/chord-b',
-  'Chord C': '/chord-c',
-  'Chord D': '/chord-d',
-  'Chord E': '/chord-e',
-  'Chord F': '/chord-f',
-  'Chord G': '/chord-g',
+  'Chord A': '/finding-guitar-notes/chord-a',
+  'Chord B': '/finding-guitar-notes/chord-b',
+  'Chord C': '/finding-guitar-notes/chord-c',
+  'Chord D': '/finding-guitar-notes/chord-d',
+  'Chord E': '/finding-guitar-notes/chord-e',
+  'Chord F': '/finding-guitar-notes/chord-f',
+  'Chord G': '/finding-guitar-notes/chord-g',
 };
 
 const drawerWidth = 200;

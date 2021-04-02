@@ -67,12 +67,12 @@ const Notes = () => {
           component={motion.div}
           initial={{ x: -200 }}
           animate={{ x: 0 }}>
-          <Link to='/notes-string-1'>
+          <Link to='/finding-guitar-notes/notes-string-1'>
             <Button className={classes.button}>
               String 1
             </Button>
           </Link>
-          <Link to='/notes-string-2'>
+          <Link to='/finding-guitar-notes/notes-string-2'>
             <Button className={classes.button}>
               String 2
             </Button>
@@ -83,12 +83,12 @@ const Notes = () => {
           component={motion.div}
           initial={{ x: 200 }}
           animate={{ x: 0 }}>
-          <Link to='/notes-string-3'>
+          <Link to='/finding-guitar-notes/notes-string-3'>
             <Button className={classes.button}>
               String 3
             </Button>
           </Link>
-          <Link to='/notes-string-4'>
+          <Link to='/finding-guitar-notes/notes-string-4'>
             <Button className={classes.button}>
               String 4
             </Button>
@@ -99,12 +99,12 @@ const Notes = () => {
           component={motion.div}
           initial={{ x: -200 }}
           animate={{ x: 0 }}>
-          <Link to='/notes-string-5'>
+          <Link to='/finding-guitar-notes/notes-string-5'>
             <Button className={classes.button}>
               String 5
             </Button>
           </Link>
-          <Link to='/notes-string-6'>
+          <Link to='/finding-guitar-notes/notes-string-6'>
             <Button className={classes.button}>
               String 6
             </Button>

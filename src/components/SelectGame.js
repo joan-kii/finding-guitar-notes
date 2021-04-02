@@ -16,13 +16,13 @@ const images = [
     url: NoteImage,
     title: 'Notes',
     width: 300,
-    path: '/notes',
+    path: '/finding-guitar-notes/notes',
   },
   {
     url: ChordImage,
     title: 'Chords',
     width: 300,
-    path: '/chords',
+    path: '/finding-guitar-notes/chords',
   }
 ];
 

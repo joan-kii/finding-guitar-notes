@@ -29,21 +29,21 @@ const App = () => {
           <Topbar />
           <Switch>
             <Route exact path='/finding-guitar-notes' component={SelectGame} />
-            <Route path='/notes' component={Notes} />
-            <Route path='/notes-string-1' component={String1Notes} />
-            <Route path='/notes-string-2' component={String2Notes} />
-            <Route path='/notes-string-3' component={String3Notes} />
-            <Route path='/notes-string-4' component={String4Notes} />
-            <Route path='/notes-string-5' component={String5Notes} />
-            <Route path='/notes-string-6' component={String6Notes} />
-            <Route path='/chords' component={Chords} />
-            <Route path='/chord-a' component={ChordA} />
-            <Route path='/chord-b' component={ChordB} />
-            <Route path='/chord-c' component={ChordC} />
-            <Route path='/chord-d' component={ChordD} />
-            <Route path='/chord-e' component={ChordE} />
-            <Route path='/chord-f' component={ChordF} />
-            <Route path='/chord-g' component={ChordG} />
+            <Route path='/finding-guitar-notes/notes' component={Notes} />
+            <Route path='/finding-guitar-notes/notes-string-1' component={String1Notes} />
+            <Route path='/finding-guitar-notes/notes-string-2' component={String2Notes} />
+            <Route path='/finding-guitar-notes/notes-string-3' component={String3Notes} />
+            <Route path='/finding-guitar-notes/notes-string-4' component={String4Notes} />
+            <Route path='/finding-guitar-notes/notes-string-5' component={String5Notes} />
+            <Route path='/finding-guitar-notes/notes-string-6' component={String6Notes} />
+            <Route path='/finding-guitar-notes/chords' component={Chords} />
+            <Route path='/finding-guitar-notes/chord-a' component={ChordA} />
+            <Route path='/finding-guitar-notes/chord-b' component={ChordB} />
+            <Route path='/finding-guitar-notes/chord-c' component={ChordC} />
+            <Route path='/finding-guitar-notes/chord-d' component={ChordD} />
+            <Route path='/finding-guitar-notes/chord-e' component={ChordE} />
+            <Route path='/finding-guitar-notes/chord-f' component={ChordF} />
+            <Route path='/finding-guitar-notes/chord-g' component={ChordG} />
           </ Switch>
         </ContextProvider> 
       </ Router>

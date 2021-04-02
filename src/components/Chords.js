@@ -67,12 +67,12 @@ const Chords = () => {
           component={motion.div}
           initial={{ x: -200 }}
           animate={{ x: 0 }}>
-          <Link to='/chord-a'>
+          <Link to='/finding-guitar-notes/chord-a'>
             <Button className={classes.button}>
               Chord A
             </Button>
           </Link>
-          <Link to='/chord-b'>
+          <Link to='/finding-guitar-notes/chord-b'>
             <Button className={classes.button}>
               Chord B
             </Button>
@@ -83,12 +83,12 @@ const Chords = () => {
           component={motion.div}
           initial={{ x: 200 }}
           animate={{ x: 0 }}>
-          <Link to='/chord-c'>
+          <Link to='/finding-guitar-notes/chord-c'>
             <Button className={classes.button}>
               Chord C
             </Button>
           </Link>
-          <Link to='/chord-d'>
+          <Link to='/finding-guitar-notes/chord-d'>
             <Button className={classes.button}>
               Chord D
             </Button>
@@ -99,12 +99,12 @@ const Chords = () => {
           component={motion.div}
           initial={{ x: -200 }}
           animate={{ x: 0 }}>
-          <Link to='/chord-e'>
+          <Link to='/finding-guitar-notes/chord-e'>
             <Button className={classes.button}>
               Chord E
             </Button>
           </Link>
-          <Link to='/chord-f'>
+          <Link to='/finding-guitar-notes/chord-f'>
             <Button className={classes.button}>
               Chord F
             </Button>
@@ -115,7 +115,7 @@ const Chords = () => {
           component={motion.div}
           initial={{ y: 200 }}
           animate={{ y: 0 }}>
-          <Link to='/chord-g'>
+          <Link to='/finding-guitar-notes/chord-g'>
             <Button className={classes.button}>
               Chord G
             </Button>
