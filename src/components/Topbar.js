@@ -126,7 +126,7 @@ const Topbar = () => {
               color='inherit'>
               <MenuIcon  />
             </IconButton>
-            <Link className={classes.title} to='/finding-guitar-notes/'>
+            <Link className={classes.title} to='/finding-guitar-notes'>
               <Typography 
                 variant='h5'
                 component={motion.h1} 

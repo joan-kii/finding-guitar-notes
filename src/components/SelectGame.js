@@ -22,7 +22,7 @@ const images = [
     url: ChordImage,
     title: 'Chords',
     width: 300,
-    path: 'chords',
+    path: '/chords',
   }
 ];
 
