@@ -28,7 +28,7 @@ const App = () => {
         <ContextProvider>
           <Topbar />
           <Switch>
-            <Route exact path='/' component={SelectGame} />
+            <Route exact path='/finding-guitar-notes' component={SelectGame} />
             <Route path='/notes' component={Notes} />
             <Route path='/notes-string-1' component={String1Notes} />
             <Route path='/notes-string-2' component={String2Notes} />
