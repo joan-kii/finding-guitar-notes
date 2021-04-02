@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/finding-guitar-notes/static/css/main.6afa7019.chunk.css",
+    "main.js": "/finding-guitar-notes/static/js/main.fd4df904.chunk.js",
+    "main.js.map": "/finding-guitar-notes/static/js/main.fd4df904.chunk.js.map",
+    "runtime-main.js": "/finding-guitar-notes/static/js/runtime-main.e0d94972.js",
+    "runtime-main.js.map": "/finding-guitar-notes/static/js/runtime-main.e0d94972.js.map",
+    "static/js/2.f8340425.chunk.js": "/finding-guitar-notes/static/js/2.f8340425.chunk.js",
+    "static/js/2.f8340425.chunk.js.map": "/finding-guitar-notes/static/js/2.f8340425.chunk.js.map",
+    "index.html": "/finding-guitar-notes/index.html",
+    "static/css/main.6afa7019.chunk.css.map": "/finding-guitar-notes/static/css/main.6afa7019.chunk.css.map",
+    "static/js/2.f8340425.chunk.js.LICENSE.txt": "/finding-guitar-notes/static/js/2.f8340425.chunk.js.LICENSE.txt",
+    "static/media/chord.0b9662d2.jpg": "/finding-guitar-notes/static/media/chord.0b9662d2.jpg",
+    "static/media/note.12c04b37.jpg": "/finding-guitar-notes/static/media/note.12c04b37.jpg",
+    "static/media/index.css": "/finding-guitar-notes/static/media/wood-pattern.c226c30c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e0d94972.js",
+    "static/js/2.f8340425.chunk.js",
+    "static/css/main.6afa7019.chunk.css",
+    "static/js/main.fd4df904.chunk.js"
+  ]
+}
