@@ -42,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     underline: 'none',
+    '&:hover': {
+      textDecoration: 'none'
+    }
   }
 }));
 
