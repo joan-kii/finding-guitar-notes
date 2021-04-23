@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: 4,
     },
     link: {
-      underline: 'none',
+      textDecoration: 'none',
       '&:hover': {
         textDecoration: 'none'
       }
