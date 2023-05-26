@@ -1,6 +1,12 @@
-Web App para aprender las notas en la guitarra como práctica en The Odin Project.
+## [Live Demo](https://joan-kii.github.io/finding-guitar-notes)
 
-Creada con React, Material Ui, Framer-Motion y Firebase.
+## Overview
+This is an exercise for The Odin Project's JavaScript path. A web app for learning the guitar fretboard notes.
 
-Puedes echarle un vistazo [aquí](https://joan-kii.github.io/finding-guitar-notes).
+## Dependencies
+  - React
+  - Firebase
+  - Framer-Motion
 
+## Styles
+  - MaterialUI
